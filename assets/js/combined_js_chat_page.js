@@ -148,9 +148,6 @@ var startTime;
 zp.addPlugins({ ZIM });
 
 zp.setCallInvitationConfig({
-  // enableCustomCallInvitationWaitingPage: true,
-  // enableCustomCallInvitationDialog: true,
-
 
   ringtoneConfig: {
     incomingCallUrl: 'assets/files/ringtones/incoming.mp3', // The ringtone when receiving an incoming call invitation.
@@ -162,6 +159,17 @@ zp.setCallInvitationConfig({
     startTime = new Date();
     elapsedTime = 0;
     // waitingPageDom.style.display = 'none';
+    return {
+      turnOnMicrophoneWhenJoining: true,
+      turnOnCameraWhenJoining: false,
+      showMyCameraToggleButton: false,
+      showMyMicrophoneToggleButton: true,
+      showAudioVideoSettingsButton: true,
+      showScreenSharingButton: false,
+      showTextChat: true,
+      showUserList: true,
+      // ...
+     }
   },
   // The callback for the call invitation ends (this will be triggered when the call invitation is refused/timed out/canceled/ended due to busy status.)
   onCallInvitationEnded: (reason,data) =>{
