@@ -189,7 +189,7 @@ $("body").on('click','.do_voice_call',async function(e){
         }
         const role = isMeetingExist == 0 ? ZegoUIKitPrebuilt.Host : ZegoUIKitPrebuilt.Audience;
         var config = {
-          container: document.getElementById("group-meeting-room"),
+          // container: document.getElementById("group-meeting-room"),
           showAudioVideoSettingsButton: false,
           showScreenSharingButton: false,
           showPreJoinView: false,
@@ -238,7 +238,7 @@ $("body").on('click','.do_voice_call',async function(e){
           },
           onLeaveRoom: () => {
             // Add your custom logic
-            location.reload();
+            // location.reload();
             if (isMeetingExist == 0) {
               var data = {
                 event: "group_voice_call",
@@ -282,7 +282,7 @@ $("body").on('click','.do_voice_call',async function(e){
     const zpLiveAudio = await ZegoUIKitPrebuilt.create(kitToken);
 
     var config = {
-      container: document.getElementById("group-meeting-room"),
+      // container: document.getElementById("group-meeting-room"),
       turnOnCameraWhenJoining : false,
       showMyCameraToggleButton : false,
       turnOnMicrophoneWhenJoining : true,
@@ -308,7 +308,7 @@ $("body").on('click','.do_voice_call',async function(e){
       },
       onLeaveRoom: () => {
         // Add your custom logic
-        location.reload();
+        // location.reload();
         var endTime = new Date();
         var timeDiff = endTime - startTime;
 
