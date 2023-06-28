@@ -180,86 +180,24 @@ $("body").on('click', '.toggle_search_messages', function (e) {
 });
 //FIXME-BINGO
 $("body").on('click', '.do_voice_call', async function (e) {
+    const targetUserID = $(".main .chatbox").attr('user_id');
+    const targetUserName = $(".main .chatbox .header .heading .title").text();
 
-    if ($(".main .chatbox").attr('group_id') !== undefined) {
-        var data = {
-            load: "group_members",
-            filter: 0,
-            offset: 0,
-            sortby: 0,
-            search: 0,
-            group_id:$(".main .chatbox").attr('group_id')
-        };
-        
-        if (user_csrf_token !== null) {
-            data["csrf_token"] = user_csrf_token;
-        }
-        load_aside_request = $.ajax({
-            type: 'POST',
-            url: api_request_url,
-            data: data,
-            async: true,
-            beforeSend: function() {
-                if (load_aside_request != null) {
-                    load_aside_request.abort();
-                    load_aside_request = null;
-                }
-            },
-            success: function(data) {}
-        }).done(function(data) {
-            if (isJSON(data)) {
-              data = $.parseJSON(data);
-              var content = data.content;
-              
-              if (data.content !== undefined) {
-                totalitems = Object.keys(data.content).length;
-                if (totalitems > 0) {
-                  var targetUsers = [];
-                  $.each(content, function(key, val) {
-                    if ( val.user_id != userID ) {
-                      const targetUser = {
-                        userID: val.user_id,
-                        userName: val.title
-                      };
-                      targetUsers.push(targetUser);
-                    }
-                  });
-                  
-                  zp.sendCallInvitation({
-                      callees: targetUsers,
-                      callType: ZegoUIKitPrebuilt.InvitationTypeVoiceCall,
-                      timeout: 60, // Timeout duration (second). 60s by default, range from [1-600s].
-                  }).then((res) => {
-                      console.warn(res);
-                  }).catch((err) => {
-                      console.warn(err);
-                  });
-                }
-              }
-  
-            }
-        }).fail(function(qXHR, textStatus, errorThrown) {
-            console.log("error");
-        });
-    } else if ($(".main .chatbox").attr('user_id') !== undefined) {
-      const targetUserID = $(".main .chatbox").attr('user_id');
-      const targetUserName = $(".main .chatbox .header .heading .title").text();
-  
-      const targetUser = {
-          userID: targetUserID,
-          userName: targetUserName
-      };
-      zp.sendCallInvitation({
-          callees: [targetUser],
-          callType: ZegoUIKitPrebuilt.InvitationTypeVoiceCall,
-          timeout: 60, // Timeout duration (second). 60s by default, range from [1-600s].
-      }).then((res) => {
-          console.warn(res);
-      }).catch((err) => {
-          console.warn(err);
-      });
-    }
-});
+    const targetUser = {
+        userID: targetUserID,
+        userName: targetUserName
+    };
+    zp.sendCallInvitation({
+        callees: [targetUser],
+        callType: ZegoUIKitPrebuilt.InvitationTypeVoiceCall,
+        timeout: 60, // Timeout duration (second). 60s by default, range from [1-600s].
+    }).then((res) => {
+        console.warn(res);
+    }).catch((err) => {
+        console.warn(err);
+    });
+  }
+);
 
 $("body").on('click', '.main .middle > .video_preview .close_player', function (e) {
     $('.main .middle > .video_preview').addClass('d-none');

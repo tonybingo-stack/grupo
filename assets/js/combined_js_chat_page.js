@@ -233,68 +233,6 @@ if(element.attr('loader')!==undefined){$(element.attr('loader')).hide()}
 element.removeClass('processing');change_browser_title(browser_title);history.pushState({},null,browser_address_bar)}).fail(function(qXHR,textStatus,errorThrown){if(element.attr('loader')!==undefined){$(element.attr('loader')).hide()}
 element.removeClass('processing');console.log('ERROR : '+errorThrown)})}});$("body").on('mouseenter','.main .chatbox > .header.view_info > .heading,.main .chatbox > .header.view_info > .image',function(e){if($(window).width()>767.98){$('.main .chatbox > .header > .heading > .subtitle').hide();$('.main .chatbox > .header > .heading > .whos_typing').hide();$('.main .chatbox > .header > .heading > .view_info').fadeIn()}});$("body").on('mouseleave','.main .chatbox > .header.view_info > .heading,.main .chatbox > .header.view_info > .image',function(e){if($(window).width()>767.98){$('.main .chatbox > .header > .heading > .view_info').hide();$('.main .chatbox > .header > .heading > .subtitle').fadeIn();$('.main .chatbox > .header > .heading > .whos_typing').fadeIn()}});
 $("body").on('click','.do_voice_call',function(e){ 
-  
-  if ($(".main .chatbox").attr('group_id') !== undefined) {
-      var data = {
-          load: "group_members",
-          filter: 0,
-          offset: 0,
-          sortby: 0,
-          search: 0,
-          group_id:$(".main .chatbox").attr('group_id')
-      };
-      
-      if (user_csrf_token !== null) {
-          data["csrf_token"] = user_csrf_token;
-      }
-      load_aside_request = $.ajax({
-          type: 'POST',
-          url: api_request_url,
-          data: data,
-          async: true,
-          beforeSend: function() {
-              if (load_aside_request != null) {
-                  load_aside_request.abort();
-                  load_aside_request = null;
-              }
-          },
-          success: function(data) {}
-      }).done(function(data) {
-          if (isJSON(data)) {
-            data = $.parseJSON(data);
-            var content = data.content;
-            
-            if (data.content !== undefined) {
-              totalitems = Object.keys(data.content).length;
-              if (totalitems > 0) {
-                var targetUsers = [];
-                $.each(content, function(key, val) {
-                  if ( val.user_id != userID ) {
-                    const targetUser = {
-                      userID: val.user_id,
-                      userName: val.title
-                    };
-                    targetUsers.push(targetUser);
-                  }
-                });
-                
-                zp.sendCallInvitation({
-                    callees: targetUsers,
-                    callType: ZegoUIKitPrebuilt.InvitationTypeVoiceCall,
-                    timeout: 60, // Timeout duration (second). 60s by default, range from [1-600s].
-                }).then((res) => {
-                    console.warn(res);
-                }).catch((err) => {
-                    console.warn(err);
-                });
-              }
-            }
-
-          }
-      }).fail(function(qXHR, textStatus, errorThrown) {
-          console.log("error");
-      });
-  } else if ($(".main .chatbox").attr('user_id') !== undefined) {
     const targetUserID = $(".main .chatbox").attr('user_id');
     const targetUserName = $(".main .chatbox .header .heading .title").text();
 
@@ -312,8 +250,7 @@ $("body").on('click','.do_voice_call',function(e){
         console.warn(err);
     });
   }
-
-});
+);
 $("body").on('click','.toggle_search_messages',function(e){if($('.main .middle .search_messages').is(':visible')){$('.main .middle .search_messages').hide()}else{$('.main .chatbox > .header > .switch_user').removeClass('open');$('.main .middle .search_messages').fadeIn();$('.main .middle .search_messages > div > .search > div > input').trigger('focus')}});$("body").on('click','.main .middle > .video_preview .close_player',function(e){$('.main .middle > .video_preview').addClass('d-none');$('.main .middle > .video_preview > div').html('');if($('.main .middle > .group_headers').hasClass('header_content_loaded')){$('.main .middle > .group_headers').removeClass('d-none');$('.main .middle > .group_headers > .header_content').html(group_header_contents)}});$("body").on('click','.main .middle > .iframe_window .close_iframe_window',function(e){$('.main .middle > .iframe_window').addClass('d-none');$('.main .middle > .iframe_window > div').html('');if($('.main .middle > .group_headers').hasClass('header_content_loaded')){$('.main .middle > .group_headers').removeClass('d-none');$('.main .middle > .group_headers > .header_content').html(group_header_contents)}});$("body").on('click','.main .middle > .group_headers .close_group_header',function(e){group_header_contents=null;$('.main .middle > .group_headers > .header_content').html('');$('.main .middle > .group_headers').removeClass('header_content_loaded');$('.main .middle > .group_headers').addClass('d-none')});$("body").on('mouseenter','.main .chatbox > .contents > .chat_messages > ul > li > div >.right > .header > .tools > .timestamp',function(e){$('.main .chatbox > .contents > .date').hide();if($(this).parents('.message').find('.date').attr('message_sent_on')!==undefined){var message_sent_on=$(this).parents('.message').find('.date').attr('message_sent_on');$('.main .chatbox > .contents > .date > span').text(message_sent_on);$('.main .chatbox > .contents > .date').show()}});$("body").on('mouseleave','.main .chatbox > .contents > .chat_messages > ul > li > div >.right > .header > .tools > .timestamp',function(e){$('.main .chatbox > .contents > .date').hide()});$("body").on('click','.preview_video',function(e){$('.main .middle > .iframe_window').addClass('d-none');$('.main .middle > .iframe_window > div').html('');$('.main .middle > .group_headers').addClass('d-none');$('.main .middle > .group_headers > .header_content').html('');$('.main .middle > .video_preview').addClass('d-none');$('.main .middle > .video_preview > div').html('');var content='';if($(this).attr('video_file')!==undefined){if($(this).attr('mime_type')===undefined){$(this).attr('mime_type','')}
 if($(this).attr('thumbnail')===undefined){$(this).attr('thumbnail','')}
 content+='<video id="video_preview" class="video-js vjs-theme-city" autoplay playsinline controls poster="'+$(this).attr('thumbnail')+'">';content+='<source src="'+$(this).attr('video_file')+'" type="'+$(this).attr('mime_type')+'" />';content+='</video>'}else if($(this).attr('video_url')!==undefined){content+='<video id="video_preview" class="video-js vjs-theme-city" autoplay playsinline controls poster="'+$(this).attr('thumbnail')+'">';content+='</video>'}
