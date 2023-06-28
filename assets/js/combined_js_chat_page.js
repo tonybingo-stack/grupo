@@ -134,62 +134,7 @@ if($(this).attr('stopPropagation')===undefined){$(this).find(".options").trigger
 if($('.main .aside .selector.select_all').hasClass('d-none')){$('.main .aside .selector > input[type="checkbox"]').prop('checked',!1);$('.main .aside > .site_records > .tools > .multiple_selection').addClass('d-none')}});$('body').on('click',".main .aside > .site_records > .records > .list > li > div > .right > .options",function(e){if($(this).find("span").is(":visible")){$(".main .aside > .site_records > .records > .list > li > div > .right > .options > span").hide()}else{$(".main .aside > .site_records > .records > .list > li > div > .right > .options > span").hide();$(this).find("span").css('display','block')}});$("body").on('click','.main .aside > .site_records > .current_record > .title',function(e){if(!$('.main .aside > .site_records > .current_record').hasClass('loading')&&!$(this).find('div').hasClass('dropdown_button')||$(this).attr('disable_preloader')!==undefined){$('.main .aside > .site_records .record_info > .refresh_current_record').html('<span>Refresh</span>');$('.main .aside > .site_records .record_info > .refresh_current_record > span').addClass('load_aside');$('.main .aside > .site_records .record_info > .refresh_current_record > span').attr('load',$('.main .aside > .site_records > .current_record').attr('load'));if($(this).attr('filter_data')!==undefined){$('.main .aside > .site_records .record_info > .refresh_current_record > span').attr('filter','pending_approval');$('.main .aside > .site_records .record_info > .refresh_current_record > span').attr('skip_filter_title',!0)}
 $(this).removeAttr('filter_data');if($('.main .aside > .site_records .record_info > .data_attributes > span').length>0){var append_data=$('.main .aside > .site_records .record_info > .data_attributes > span').data();$.each(append_data,function(index,data_item){var data_index='data-'+index;$('.main .aside > .site_records .record_info > .refresh_current_record > span').attr(data_index,append_data[index])})}
 if($(this).attr('disable_preloader')!==undefined){$('.main .aside > .site_records .record_info > .refresh_current_record > span').attr('disable_preloader',!0)}
-$('.main .aside > .site_records .record_info > .refresh_current_record > span').trigger('click')}});var video_preview=null;var group_header_contents=null;var load_group_header_request=null;
-// FIXME-BINGO
-// function generateUUID() {
-//   let dt = new Date().getTime();
-//   const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-//     const r = (dt + Math.random() * 16) % 16 | 0;
-//     dt = Math.floor(dt / 16);
-//     return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-//   });
-//   return uuid;
-// }
-
-
-// const TOKEN = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, generateUUID(), userID+"private", userName);
-// const zp = ZegoUIKitPrebuilt.create(TOKEN);
-// zp.addPlugins({ ZIM });
-
-// zp.setCallInvitationConfig({
-
-//   ringtoneConfig: {
-//     incomingCallUrl: 'assets/files/ringtones/incoming.mp3', // The ringtone when receiving an incoming call invitation.
-//     outgoingCallUrl: 'assets/files/ringtones/outgoing.mp3' // The ringtone when sending a call invitation. 
-//   },
-
-//   // The callback for the call invitation is accepted before joining the room (a room is used for making a call), which can be used to set up the room config. The Call Kit enables you to join the room automatically, and the room config adapts according to the specific call type (ZegoInvitationType).
-//   onSetRoomConfigBeforeJoining: (callType) => {
-//     startTime = new Date();
-//     elapsedTime = 0;
-
-//     return {
-//       turnOnMicrophoneWhenJoining: true,
-//       turnOnCameraWhenJoining: false,
-//       showMyCameraToggleButton: false,
-//       showMyMicrophoneToggleButton: true,
-//       showAudioVideoSettingsButton: false,
-//       showScreenSharingButton: false,
-//       showTextChat: false,
-//       showUserList: false,
-//       showRoomTimer: true,
-//       showRoomDetailsButton: false
-//       // ...
-//     }
-//   },
-//   // The callback for the call invitation ends (this will be triggered when the call invitation is refused/timed out/canceled/ended due to busy status.)
-//   onCallInvitationEnded: (reason,data) =>{
-//       // Add your custom logic here.
-//       var endTime = new Date();
-//       var timeDiff = endTime - startTime;
-
-//       // Convert the time difference to minutes
-//       var minutesDiff = Math.ceil(timeDiff / 1000 / 60);
-//       console.log("BINGO", minutesDiff);
-//   },
-// })
-
-$("body").on('click','.load_page',function(e){if(!$(this).hasClass('processing')){$(this).addClass('processing');open_column('second');var browser_title=default_meta_title;var browser_address_bar=baseurl;var element=$(this);if($(this).attr('loader')!==undefined){$($(this).attr('loader')).show()}
+$('.main .aside > .site_records .record_info > .refresh_current_record > span').trigger('click')}});var video_preview=null;var group_header_contents=null;var load_group_header_request=null;$("body").on('click','.load_page',function(e){if(!$(this).hasClass('processing')){$(this).addClass('processing');open_column('second');var browser_title=default_meta_title;var browser_address_bar=baseurl;var element=$(this);if($(this).attr('loader')!==undefined){$($(this).attr('loader')).show()}
 $('.main .middle > .content > div').addClass('d-none');$('.main .middle > .content > .custom_page').removeClass('d-none');$('.main .middle > .content > .custom_page > .page_content').hide();$('.main .middle > .content > .custom_page > .page_content > div').html('');var data={load:'custom_page_content',page_id:$(this).attr('page_id'),};if(user_csrf_token!==null){data.csrf_token=user_csrf_token}
 $.ajax({type:'POST',url:api_request_url,data:data,async:!0,success:function(data){}}).done(function(data){if(data===''){location.reload(!0)}else if(isJSON(data)){data=$.parseJSON(data);if(data.browser_title!==undefined){browser_title=data.browser_title}
 if(data.browser_address_bar!==undefined){browser_address_bar=data.browser_address_bar}
@@ -199,12 +144,6 @@ if(data.page_content!=undefined){$('.main .middle > .content > .custom_page > .p
 if(element.attr('loader')!==undefined){$(element.attr('loader')).hide()}
 element.removeClass('processing');change_browser_title(browser_title);history.pushState({},null,browser_address_bar)}).fail(function(qXHR,textStatus,errorThrown){if(element.attr('loader')!==undefined){$(element.attr('loader')).hide()}
 element.removeClass('processing');console.log('ERROR : '+errorThrown)})}});$("body").on('mouseenter','.main .chatbox > .header.view_info > .heading,.main .chatbox > .header.view_info > .image',function(e){if($(window).width()>767.98){$('.main .chatbox > .header > .heading > .subtitle').hide();$('.main .chatbox > .header > .heading > .whos_typing').hide();$('.main .chatbox > .header > .heading > .view_info').fadeIn()}});$("body").on('mouseleave','.main .chatbox > .header.view_info > .heading,.main .chatbox > .header.view_info > .image',function(e){if($(window).width()>767.98){$('.main .chatbox > .header > .heading > .view_info').hide();$('.main .chatbox > .header > .heading > .subtitle').fadeIn();$('.main .chatbox > .header > .heading > .whos_typing').fadeIn()}});
-function getUrlParams(url) {
-    let urlStr = url.split('?')[1];
-    const urlSearchParams = new URLSearchParams(urlStr);
-    const result = Object.fromEntries(urlSearchParams.entries());
-    return result;
-}
 $("body").on('click','.do_voice_call',async function(e){ 
   const userID = $(".main .chatbox .header .icons .userId").text();
   const userName = $(".main .chatbox .header .icons .userName").text();
@@ -242,9 +181,11 @@ $("body").on('click','.do_voice_call',async function(e){
         data = JSON.parse(data);
         
         var isMeetingExist = data.result;
-        if (isMeetingExist == 0) {
-          // check if user is permitted
-  
+        var user_group_role = parseInt(data.user_group_role_id);
+        if (isMeetingExist == 0 && user_group_role != 2 && user_group_role != 3) {
+          // user has no permission
+          console.log("User role is not enough!");
+          return;
         }
         const role = isMeetingExist == 0 ? ZegoUIKitPrebuilt.Host : ZegoUIKitPrebuilt.Audience;
         var config = {
@@ -379,7 +320,6 @@ $("body").on('click','.do_voice_call',async function(e){
 
     zpLiveAudio.joinRoom(config);
   }
-
 });
 $("body").on('click','.toggle_search_messages',function(e){if($('.main .middle .search_messages').is(':visible')){$('.main .middle .search_messages').hide()}else{$('.main .chatbox > .header > .switch_user').removeClass('open');$('.main .middle .search_messages').fadeIn();$('.main .middle .search_messages > div > .search > div > input').trigger('focus')}});$("body").on('click','.main .middle > .video_preview .close_player',function(e){$('.main .middle > .video_preview').addClass('d-none');$('.main .middle > .video_preview > div').html('');if($('.main .middle > .group_headers').hasClass('header_content_loaded')){$('.main .middle > .group_headers').removeClass('d-none');$('.main .middle > .group_headers > .header_content').html(group_header_contents)}});$("body").on('click','.main .middle > .iframe_window .close_iframe_window',function(e){$('.main .middle > .iframe_window').addClass('d-none');$('.main .middle > .iframe_window > div').html('');if($('.main .middle > .group_headers').hasClass('header_content_loaded')){$('.main .middle > .group_headers').removeClass('d-none');$('.main .middle > .group_headers > .header_content').html(group_header_contents)}});$("body").on('click','.main .middle > .group_headers .close_group_header',function(e){group_header_contents=null;$('.main .middle > .group_headers > .header_content').html('');$('.main .middle > .group_headers').removeClass('header_content_loaded');$('.main .middle > .group_headers').addClass('d-none')});$("body").on('mouseenter','.main .chatbox > .contents > .chat_messages > ul > li > div >.right > .header > .tools > .timestamp',function(e){$('.main .chatbox > .contents > .date').hide();if($(this).parents('.message').find('.date').attr('message_sent_on')!==undefined){var message_sent_on=$(this).parents('.message').find('.date').attr('message_sent_on');$('.main .chatbox > .contents > .date > span').text(message_sent_on);$('.main .chatbox > .contents > .date').show()}});$("body").on('mouseleave','.main .chatbox > .contents > .chat_messages > ul > li > div >.right > .header > .tools > .timestamp',function(e){$('.main .chatbox > .contents > .date').hide()});$("body").on('click','.preview_video',function(e){$('.main .middle > .iframe_window').addClass('d-none');$('.main .middle > .iframe_window > div').html('');$('.main .middle > .group_headers').addClass('d-none');$('.main .middle > .group_headers > .header_content').html('');$('.main .middle > .video_preview').addClass('d-none');$('.main .middle > .video_preview > div').html('');var content='';if($(this).attr('video_file')!==undefined){if($(this).attr('mime_type')===undefined){$(this).attr('mime_type','')}
 if($(this).attr('thumbnail')===undefined){$(this).attr('thumbnail','')}

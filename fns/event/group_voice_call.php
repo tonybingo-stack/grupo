@@ -30,6 +30,17 @@ if (!empty($group_id) && !empty($user_id)) {
         } else if ($data["job"] === "verify") {
             $output["result"] = getCachedData("group_meeting_" . $group_id);
             if ($output["result"] == null) $output["result"] = 0;
+
+            // check user_group_role
+            $columns = ['group_members.group_role_id'];
+            $where["AND"] = ["group_members.user_id" => $user_id, "group_members.group_id" => $group_id];
+            $where["LIMIT"] = 1;
+    
+            $user_group_role_id = DB::connect()->select('group_members', $columns, $where);
+            if (count($user_group_role_id) > 0) $user_group_role_id =  $user_group_role_id[0]["group_role_id"];
+            else $user_group_role_id = 0;
+            
+            $output["user_group_role_id"] = $user_group_role_id;
         }
     }
 }

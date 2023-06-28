@@ -2,54 +2,6 @@ var video_preview = null;
 var group_header_contents = null;
 var load_group_header_request = null;
 
-// FIXME-BINGO
-const userID = $(".main .chatbox .header .icons .userId").text();
-const userName = $(".main .chatbox .header .icons .userName").text();
-const appID = 943814233;
-const serverSecret = "54845a5afc66a4ef38c90771b6b4be8e";
-var elapsedTime = 0;
-var startTime = 0;
-
-const TOKEN = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, userID, userID, userName);
-const zp = ZegoUIKitPrebuilt.create(TOKEN);
-zp.addPlugins({ ZIM });
-
-zp.setCallInvitationConfig({
-
-  ringtoneConfig: {
-    incomingCallUrl: 'assets/files/ringtones/incoming.mp3', // The ringtone when receiving an incoming call invitation.
-    outgoingCallUrl: 'assets/files/ringtones/outgoing.mp3' // The ringtone when sending a call invitation. 
-  },
-
-  // The callback for the call invitation is accepted before joining the room (a room is used for making a call), which can be used to set up the room config. The Call Kit enables you to join the room automatically, and the room config adapts according to the specific call type (ZegoInvitationType).
-  onSetRoomConfigBeforeJoining: (callType) => {
-    startTime = new Date();
-    elapsedTime = 0;
-    // waitingPageDom.style.display = 'none';
-    return {
-      turnOnMicrophoneWhenJoining: true,
-      turnOnCameraWhenJoining: false,
-      showMyCameraToggleButton: false,
-      showMyMicrophoneToggleButton: true,
-      showAudioVideoSettingsButton: true,
-      showScreenSharingButton: false,
-      showTextChat: true,
-      showUserList: true,
-      // ...
-     }
-  },
-  // The callback for the call invitation ends (this will be triggered when the call invitation is refused/timed out/canceled/ended due to busy status.)
-  onCallInvitationEnded: (reason,data) =>{
-      // Add your custom logic here.
-      var endTime = new Date();
-      var timeDiff = endTime - startTime;
-
-      // Convert the time difference to minutes
-      var minutesDiff = Math.ceil(timeDiff / 1000 / 60);
-      console.log("BINGO", minutesDiff);
-  },
-})
-
 $("body").on('click', '.load_page', function (e) {
 
     if (!$(this).hasClass('processing')) {
@@ -164,63 +116,131 @@ $("body").on('click', '.toggle_search_messages', function (e) {
 });
 //FIXME-BINGO
 $("body").on('click', '.do_voice_call', async function (e) {
+    const userID = $(".main .chatbox .header .icons .userId").text();
+    const userName = $(".main .chatbox .header .icons .userName").text();
+    const appID = 943814233;
+    const serverSecret = "54845a5afc66a4ef38c90771b6b4be8e";
+    var elapsedTime = 0;
+    var startTime = 0;
+  
     if ($(".main .chatbox").attr('group_id') !== undefined) {
+        // check if someone already hold the meeting.
+        // Generate a Kit Token by calling a method.
+        // const roomID = "678987";
+        const roomID = $(".main .chatbox").attr('group_id');
+        const kitToken =  await ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID, userName);
+        const zpLiveAudio = await ZegoUIKitPrebuilt.create(kitToken);
+        var event_request = null;
+  
         var data = {
-            load: "group_members",
-            filter: 0,
-            offset: 0,
-            sortby: 0,
-            search: 0,
-            group_id:$(".main .chatbox").attr('group_id')
+          event: "group_voice_call",
+          group_id: roomID,
+          job: "verify"
         };
         
         if (user_csrf_token !== null) {
             data["csrf_token"] = user_csrf_token;
         }
-        load_aside_request = $.ajax({
+        
+        $.ajax({
             type: 'POST',
             url: api_request_url,
             data: data,
             async: true,
-            beforeSend: function() {
-                if (load_aside_request != null) {
-                    load_aside_request.abort();
-                    load_aside_request = null;
-                }
-            },
             success: function(data) {}
         }).done(function(data) {
-            if (isJSON(data)) {
-              data = $.parseJSON(data);
-              var content = data.content;
-              
-              if (data.content !== undefined) {
-                totalitems = Object.keys(data.content).length;
-                if (totalitems > 0) {
-                  var targetUsers = [];
-                  $.each(content, function(key, val) {
-                    if ( val.user_id != userID ) {
-                      const targetUser = {
-                        userID: val.user_id,
-                        userName: val.title
-                      };
-                      targetUsers.push(targetUser);
-                    }
-                  });
-                  
-                  zp.sendCallInvitation({
-                      callees: targetUsers,
-                      callType: ZegoUIKitPrebuilt.InvitationTypeVoiceCall,
-                      timeout: 60, // Timeout duration (second). 60s by default, range from [1-600s].
-                  }).then((res) => {
-                      console.warn(res);
-                  }).catch((err) => {
-                      console.warn(err);
+          data = JSON.parse(data);
+          
+          var isMeetingExist = data.result;
+          var user_group_role = parseInt(data.user_group_role_id);
+          if (isMeetingExist == 0 && user_group_role != 2 && user_group_role != 3) {
+            // user has no permission
+            console.log("User role is not enough!");
+            return;
+          }
+          const role = isMeetingExist == 0 ? ZegoUIKitPrebuilt.Host : ZegoUIKitPrebuilt.Audience;
+          var config = {
+            container: document.getElementById("group-meeting-room"),
+            showAudioVideoSettingsButton: false,
+            showScreenSharingButton: false,
+            showPreJoinView: false,
+            showLeavingView: false,
+            showTextChat: false,
+            showUserList: false,
+            showRoomTimer: true,
+            showRoomDetailsButton: false,
+  
+            scenario: {
+                mode: ZegoUIKitPrebuilt.LiveStreaming,
+                config: {
+                  role: role 
+                }
+            },
+            // sharedLinks: [{
+            //     name: 'Join as audience',
+            //     url: url,
+            // }],
+            onJoinRoom: () => {
+              // Add your custom logic
+              if (isMeetingExist == 0) {
+                var data = {
+                  event: "group_voice_call",
+                  group_id: roomID,
+                  job: "start"
+                };
+                
+                if (user_csrf_token !== null) {
+                    data["csrf_token"] = user_csrf_token;
+                }
+                if (event_request === null) {
+                  event_request = $.ajax({
+                      type: 'POST',
+                      url: api_request_url,
+                      data: data,
+                      async: true,
+                      success: function(data) {}
+                  }).done(function(data) {
+                    console.log("success");
+                  }).fail(function(qXHR, textStatus, errorThrown) {
+                      console.log("error");
                   });
                 }
               }
-  
+            },
+            onLeaveRoom: () => {
+              // Add your custom logic
+              location.reload();
+              if (isMeetingExist == 0) {
+                var data = {
+                  event: "group_voice_call",
+                  group_id: roomID,
+                  job: "end"
+                };
+                
+                if (user_csrf_token !== null) {
+                    data["csrf_token"] = user_csrf_token;
+                }
+                event_request = $.ajax({
+                    type: 'POST',
+                    url: api_request_url,
+                    data: data,
+                    async: true,
+                    success: function(data) {}
+                }).done(function(data) {
+                  console.log("success");
+                  
+                }).fail(function(qXHR, textStatus, errorThrown) {
+                    console.log("error");
+                });
+              }
             }
+          }
+          if (role === ZegoUIKitPrebuilt.Host) {
+            config.turnOnCameraWhenJoining = false;
+            config.showMyCameraToggleButton = false;
+            config.turnOnMicrophoneWhenJoining = true;
+          }
+          zpLiveAudio.joinRoom(config);
         }).fail(function(qXHR, textStatus, errorThrown) {
             console.log("error");
         });
@@ -228,19 +248,48 @@ $("body").on('click', '.do_voice_call', async function (e) {
       const targetUserID = $(".main .chatbox").attr('user_id');
       const targetUserName = $(".main .chatbox .header .heading .title").text();
   
-      const targetUser = {
-          userID: targetUserID,
-          userName: targetUserName
-      };
-      zp.sendCallInvitation({
-          callees: [targetUser],
-          callType: ZegoUIKitPrebuilt.InvitationTypeVoiceCall,
-          timeout: 60, // Timeout duration (second). 60s by default, range from [1-600s].
-      }).then((res) => {
-          console.warn(res);
-      }).catch((err) => {
-          console.warn(err);
-      });
+      const roomID = userID > targetUserID ? userID + "-" + targetUserID : targetUserID + "-" + userID;
+      const kitToken =  await ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID, userName);
+      const zpLiveAudio = await ZegoUIKitPrebuilt.create(kitToken);
+  
+      var config = {
+        container: document.getElementById("group-meeting-room"),
+        turnOnCameraWhenJoining : false,
+        showMyCameraToggleButton : false,
+        turnOnMicrophoneWhenJoining : true,
+        showAudioVideoSettingsButton: false,
+        showScreenSharingButton: false,
+        showPreJoinView: false,
+        showLeavingView: false,
+        showTextChat: false,
+        showUserList: false,
+        showRoomTimer: true,
+        showRoomDetailsButton: false,
+        scenario: {
+          mode: ZegoUIKitPrebuilt.OneONoneCall, //  To implement 1-on-1 calls, modify the parameter here to [ZegoUIKitPrebuilt.OneONoneCall].
+        },
+        // sharedLinks: [{
+        //     name: 'Join as audience',
+        //     url: url,
+        // }],
+        onJoinRoom: () => {
+          // Add your custom logic
+          startTime = new Date();
+          elapsedTime = 0;
+        },
+        onLeaveRoom: () => {
+          // Add your custom logic
+          location.reload();
+          var endTime = new Date();
+          var timeDiff = endTime - startTime;
+  
+          // Convert the time difference to minutes
+          var minutesDiff = Math.ceil(timeDiff / 1000 / 60);
+          console.log("BINGO", minutesDiff);
+        }
+      }
+  
+      zpLiveAudio.joinRoom(config);
     }
 });
 
