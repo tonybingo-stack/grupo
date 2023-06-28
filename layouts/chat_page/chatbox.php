@@ -48,7 +48,7 @@ if (Registry::load('settings')->show_timestamp_on_mouseover === 'enable') {
         <span class="ask_confirmation delete_multiple_messages d-none" column="second" data-chat_messages=true multi_select="message_id" submit_button="<?php echo(Registry::load('strings')->yes); ?>" cancel_button="<?php echo(Registry::load('strings')->no); ?>" confirmation="<?php echo(Registry::load('strings')->confirm_delete); ?>"><i class="bi bi-x-lg"></i></span>
         <span class="reload_conversation d-none"><i class="bi bi-arrow-clockwise"></i></span>
         <!-- FIXME-BINGO -->
-        <span class="do_voice_call" ><i class="bi bi-telephone-outbound"></i></span>
+        <span class="do_voice_call" ><i class="bi bi-person-workspace"></i></span>
         <span class="userId d-none"><?php echo(Registry::load('current_user')->id); ?></span>
         <span class="userName d-none"><?php echo(Registry::load('current_user')->name); ?></span>
         <span class="toggle_search_messages"><i class="bi bi-search"></i></span>
@@ -100,7 +100,7 @@ if (Registry::load('settings')->show_timestamp_on_mouseover === 'enable') {
     </div>
 </div>
 
-<div class="contents" read_more_criteria="<?php echo(Registry::load('settings')->read_more_criteria) ?>">
+<div class="contents" id="group-meeting-room" read_more_criteria="<?php echo(Registry::load('settings')->read_more_criteria) ?>">
     <span class="date timestamp">
         <span></span>
     </span>

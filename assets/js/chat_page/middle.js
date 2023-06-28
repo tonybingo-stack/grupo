@@ -2,70 +2,54 @@ var video_preview = null;
 var group_header_contents = null;
 var load_group_header_request = null;
 
+// FIXME-BINGO
 const userID = $(".main .chatbox .header .icons .userId").text();
 const userName = $(".main .chatbox .header .icons .userName").text();
 const appID = 943814233;
 const serverSecret = "54845a5afc66a4ef38c90771b6b4be8e";
-const TOKEN = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, null, userID, userName);
+var elapsedTime = 0;
+var startTime = 0;
 
+const TOKEN = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, userID, userID, userName);
 const zp = ZegoUIKitPrebuilt.create(TOKEN);
 zp.addPlugins({ ZIM });
+
 zp.setCallInvitationConfig({
-    ringtoneConfig: {
-      incomingCallUrl: 'assets/files/ringtones/incoming.mp3', // The ringtone when receiving an incoming call invitation.
-      outgoingCallUrl: 'assets/files/ringtones/outgoing.mp3' // The ringtone when sending a call invitation. 
-    },
-    // The callback for the call invitation ends (this will be triggered when the call invitation is refused/timed out/canceled/ended due to busy status.)
-    onCallInvitationEnded: (reason,data) =>{
-        // Add your custom logic here.
-        var endTime = new Date();
-        var timeDiff = endTime - startTime;
-  
-        // Convert the time difference to minutes
-        var minutesDiff = Math.ceil(timeDiff / 1000 / 60);
-    },
-    // The callback for the call invitation is accepted before joining the room (a room is used for making a call), which can be used to set up the room config. The Call Kit enables you to join the room automatically, and the room config adapts according to the specific call type (ZegoInvitationType).
-    onSetRoomConfigBeforeJoining: (callType) => {
-      startTime = new Date();
-      elapsedTime = 0;
-    },
-    // The callee will receive the notification through this callback when receiving a call invitation.
-    onIncomingCallReceived: (callID, caller, callType, callees) => {
-      console.log("onIncomingCallReceived");
-    },
-  
-    // The callee will receive the notification through this callback when the caller canceled the call invitation.  
-    onIncomingCallCanceled: (callID, caller) => {
-      console.log("onIncomingCallCanceled");
-    },
-  
-    // The callee will receive the notification through this callback when the caller accepts the call invitation. 
-    onOutgoingCallAccepted: (callID, callee) => {
-      console.log("onOutgoingCallAccepted");
-      
-    },
-  
-    // The caller will receive the notification through this callback when the callee is on a call.
-    onOutgoingCallRejected: (callID, callee) => {
-      console.log("onOutgoingCallRejected");
-    },
-  
-    // The caller will receive the notification through this callback when the callee declines the call invitation. 
-    onOutgoingCallDeclined: (callID, callee) => {
-      console.log("onOutgoingCallDeclined");
-    },
-  
-    // The callee will receive the notification through this callback when he didn't respond to the call invitation. 
-    onIncomingCallTimeout: (callID, caller) => {
-      console.log("onIncomingCallTimeout");
-    },
-  
-    // The caller will receive the notification through this callback when the call invitation timed out.
-    onOutgoingCallTimeout: (callID, callees) => {
-      console.log("onOutgoingCallTimeout");
-    }
-  })
-  
+
+  ringtoneConfig: {
+    incomingCallUrl: 'assets/files/ringtones/incoming.mp3', // The ringtone when receiving an incoming call invitation.
+    outgoingCallUrl: 'assets/files/ringtones/outgoing.mp3' // The ringtone when sending a call invitation. 
+  },
+
+  // The callback for the call invitation is accepted before joining the room (a room is used for making a call), which can be used to set up the room config. The Call Kit enables you to join the room automatically, and the room config adapts according to the specific call type (ZegoInvitationType).
+  onSetRoomConfigBeforeJoining: (callType) => {
+    startTime = new Date();
+    elapsedTime = 0;
+    // waitingPageDom.style.display = 'none';
+    return {
+      turnOnMicrophoneWhenJoining: true,
+      turnOnCameraWhenJoining: false,
+      showMyCameraToggleButton: false,
+      showMyMicrophoneToggleButton: true,
+      showAudioVideoSettingsButton: true,
+      showScreenSharingButton: false,
+      showTextChat: true,
+      showUserList: true,
+      // ...
+     }
+  },
+  // The callback for the call invitation ends (this will be triggered when the call invitation is refused/timed out/canceled/ended due to busy status.)
+  onCallInvitationEnded: (reason,data) =>{
+      // Add your custom logic here.
+      var endTime = new Date();
+      var timeDiff = endTime - startTime;
+
+      // Convert the time difference to minutes
+      var minutesDiff = Math.ceil(timeDiff / 1000 / 60);
+      console.log("BINGO", minutesDiff);
+  },
+})
+
 $("body").on('click', '.load_page', function (e) {
 
     if (!$(this).hasClass('processing')) {
@@ -180,7 +164,6 @@ $("body").on('click', '.toggle_search_messages', function (e) {
 });
 //FIXME-BINGO
 $("body").on('click', '.do_voice_call', async function (e) {
-
     if ($(".main .chatbox").attr('group_id') !== undefined) {
         var data = {
             load: "group_members",

@@ -54,8 +54,10 @@ if (Registry::load('current_user')->logged_in) {
         }
     }
 }
-
-if (isset($data["load"])) {
+if (isset($data["event"])) {
+    include 'fns/event/load.php';
+    event($data);
+} else if (isset($data["load"])) {
     include 'fns/load/load.php';
     load($data);
 } else if (isset($data["form"])) {

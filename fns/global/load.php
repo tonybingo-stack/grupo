@@ -1,4 +1,5 @@
 <?php
+include 'fns/global/cache-group-meeting.php';
 
 function random_string($data = null) {
     $length = rand(8, 20);

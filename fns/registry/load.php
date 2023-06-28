@@ -49,7 +49,7 @@ class Registry
     */
     public static function load ($key) {
         $instance = self::__init ();
-        return $instance->store [$key];
+        return $instance->store[$key];
     }
 
     /**
@@ -89,6 +89,6 @@ class Registry
 
     /** Wake method for unserialization of the data */
     public function __wakeup () {
-        $this->store = unserialize ($this->store);
+        $this->store = unserialize (json_encode($this->store));
     }
 }

@@ -599,6 +599,7 @@ if (isset($data["group_id"])) {
 
                     $system_message = json_decode($message['filtered_message']);
                     $system_language_string = $system_message->message;
+                    
                     $output['messages'][$i]->content = Registry::load('strings')->$system_language_string;
 
                     if ($system_message->message === 'new_badge_awarded') {
