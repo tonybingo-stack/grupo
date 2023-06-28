@@ -1998,7 +1998,8 @@ INSERT INTO `gr_language_strings` (`string_id`, `string_constant`, `string_value
 (1141, 'landing_page_faq_question_9', '', 'one-line', 0, 0, 1),
 (1142, 'landing_page_faq_question_9_answer', '', 'one-line', 0, 0, 1),
 (1143, 'set_fake_online_users', 'Set Fake Online Users', 'one-line', 0, 0, 1),
-(1144, 'landing_page_faq_question_10', '', 'one-line', 0, 0, 1);
+(1144, 'landing_page_faq_question_10', '', 'one-line', 0, 0, 1),
+(1145, 'group_meeting_started', 'has become a host now.', 'one-line', 0, 0, 1);
 
 -- --------------------------------------------------------
 
