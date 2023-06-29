@@ -1999,7 +1999,8 @@ INSERT INTO `gr_language_strings` (`string_id`, `string_constant`, `string_value
 (1142, 'landing_page_faq_question_9_answer', '', 'one-line', 0, 0, 1),
 (1143, 'set_fake_online_users', 'Set Fake Online Users', 'one-line', 0, 0, 1),
 (1144, 'landing_page_faq_question_10', '', 'one-line', 0, 0, 1),
-(1145, 'group_meeting_started', 'has become a host now.', 'one-line', 0, 0, 1);
+(1145, 'group_meeting_started', 'has become a host now.', 'one-line', 0, 0, 1),
+(1146, 'extra_admin', 'Extra Admin', 'one-line', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2341,7 +2342,9 @@ CREATE TABLE `gr_site_users` (
   `geo_latitude` decimal(10,8) DEFAULT NULL,
   `geo_longitude` decimal(11,8) DEFAULT NULL,
   `total_friends` bigint DEFAULT '0',
+  `credits` int DEFAULT '0',
   `social_login_provider_id` bigint DEFAULT NULL,
+  `agency_rate` double DEFAULT '0.0',
   `access_token` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `token_generated_on` datetime DEFAULT '1970-01-02 00:00:00',
   `created_on` datetime NOT NULL,
@@ -2354,8 +2357,8 @@ CREATE TABLE `gr_site_users` (
 -- Dumping data for table `gr_site_users`
 --
 
-INSERT INTO `gr_site_users` (`user_id`, `display_name`, `username`, `email_address`, `unverified_email_address`, `verification_code`, `password`, `encrypt_type`, `salt`, `site_role_id`, `previous_site_role_id`, `online_status`, `stay_online`, `approved`, `geo_latitude`, `geo_longitude`, `total_friends`, `social_login_provider_id`, `access_token`, `token_generated_on`, `created_on`, `updated_on`, `last_seen_on`, `last_login_session`) VALUES
-(1, 'Site Admin', 'admin', 'email@yourdomain.test', NULL, NULL, '$2y$10$lmQGd7o.Gk5ETXK6EhQMyOzSF2Lk6v/aAFBvawn1.rmhE8H0gEunO', 'php_password_hash', '', 2, 2, 0, 0, 1, '11.25875310', '75.78041000', 1, NULL, '', '1970-01-02 00:00:00', '2022-04-11 08:23:17', '2022-10-29 00:50:28', '2022-10-29 00:50:28', '2022-10-28 19:20:11');
+INSERT INTO `gr_site_users` (`user_id`, `display_name`, `username`, `email_address`, `unverified_email_address`, `verification_code`, `password`, `encrypt_type`, `salt`, `site_role_id`, `previous_site_role_id`, `online_status`, `stay_online`, `approved`, `geo_latitude`, `geo_longitude`, `total_friends`, `credits`, `social_login_provider_id`, `agency_rate`, `access_token`, `token_generated_on`, `created_on`, `updated_on`, `last_seen_on`, `last_login_session`) VALUES
+(1, 'Site Admin', 'admin', 'email@yourdomain.test', NULL, NULL, '$2y$10$lmQGd7o.Gk5ETXK6EhQMyOzSF2Lk6v/aAFBvawn1.rmhE8H0gEunO', 'php_password_hash', '', 2, 2, 0, 0, 1, '11.25875310', '75.78041000', 1, 0, NULL, 0.1, '', '1970-01-02 00:00:00', '2022-04-11 08:23:17', '2022-10-29 00:50:28', '2022-10-29 00:50:28', '2022-10-28 19:20:11');
 
 -- --------------------------------------------------------
 

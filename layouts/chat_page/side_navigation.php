@@ -2,13 +2,13 @@
     <div class="top">
         <div class="logo refresh_page">
             <?php if (Registry::load('current_user')->color_scheme === 'dark_mode') {
-                ?>
-                <img src="<?php echo Registry::load('config')->site_url.'assets/files/logos/chat_page_logo_dark_mode.png'.$cache_timestamp; ?>" />
-                <?php
+            ?>
+                <img src="<?php echo Registry::load('config')->site_url . 'assets/files/logos/chat_page_logo_dark_mode.png' . $cache_timestamp; ?>" />
+            <?php
             } else {
-                ?>
-                <img src="<?php echo Registry::load('config')->site_url.'assets/files/logos/chat_page_logo.png'.$cache_timestamp; ?>" />
-                <?php
+            ?>
+                <img src="<?php echo Registry::load('config')->site_url . 'assets/files/logos/chat_page_logo.png' . $cache_timestamp; ?>" />
+            <?php
             } ?>
         </div>
         <div class="icon">
@@ -24,24 +24,24 @@
 
             <?php
             if (role(['permissions' => ['site_notifications' => 'view']])) {
-                ?>
+            ?>
                 <li class="load_aside realtime_module load_site_notifications" module="site_notifications" load="site_notifications" id="alerts">
                     <div class="menu_item">
                         <span class="icon">
                             <i class="iconic_notifications"></i>
                         </span>
                         <span class="title">
-                            <?php echo(Registry::load('strings')->notifications) ?>
+                            <?php echo (Registry::load('strings')->notifications) ?>
                         </span>
                         <span class="unread"></span>
                     </div>
                 </li>
-                <?php
+            <?php
             } ?>
 
             <?php
             if (role(['permissions' => ['super_privileges' => ['view_statistics', 'monitor_group_chats', 'monitor_private_chats']], 'condition' => 'OR'])) {
-                ?>
+            ?>
                 <li class="has_child">
                     <div class="menu_item">
                         <span class="icon">
@@ -55,25 +55,25 @@
                         <ul>
                             <?php
                             if (role(['permissions' => ['super_privileges' => 'view_statistics']])) {
-                                ?>
-                                <li class="show_statistics load_statistics"><?php echo(Registry::load('strings')->statistics) ?></li>
-                                <?php
+                            ?>
+                                <li class="show_statistics load_statistics"><?php echo (Registry::load('strings')->statistics) ?></li>
+                            <?php
                             }
                             if (role(['permissions' => ['super_privileges' => 'monitor_private_chats']])) {
-                                ?>
+                            ?>
                                 <li class="load_conversation" group_id="all"><?php echo Registry::load('strings')->group_chats ?></li>
-                                <?php
+                            <?php
                             }
                             if (role(['permissions' => ['super_privileges' => 'monitor_private_chats']])) {
-                                ?>
+                            ?>
                                 <li class="load_conversation" user_id="all"><?php echo Registry::load('strings')->private_chats ?></li>
-                                <?php
+                            <?php
                             }
                             ?>
                         </ul>
                     </div>
                 </li>
-                <?php
+            <?php
             } ?>
 
             <?php
@@ -90,7 +90,7 @@
             }
 
             if ($view_groups) {
-                ?>
+            ?>
 
                 <li class="load_aside realtime_module load_groups" load="groups" module="groups" unread="0">
                     <div class="menu_item">
@@ -98,44 +98,44 @@
                             <i class="iconic_groups"></i>
                         </span>
                         <span class="title">
-                            <?php echo(Registry::load('strings')->groups) ?>
+                            <?php echo (Registry::load('strings')->groups) ?>
                         </span>
                         <span class="unread"></span>
                     </div>
                 </li>
-                <?php
+            <?php
             }
 
             if (Registry::load('settings')->hide_groups_on_group_url) {
-                ?>
-                <li class="load_conversation" group_id="<?php echo(Registry::load('config')->load_group_conversation) ?>">
+            ?>
+                <li class="load_conversation" group_id="<?php echo (Registry::load('config')->load_group_conversation) ?>">
                     <div class="menu_item">
                         <span class="icon">
                             <i class="iconic_groups"></i>
                         </span>
                         <span class="title">
-                            <?php echo(Registry::load('strings')->group_chat) ?>
+                            <?php echo (Registry::load('strings')->group_chat) ?>
                         </span>
                     </div>
                 </li>
 
-                <li class="load_aside d-none force_trigger_onload" load="group_members" data-group_id="<?php echo(Registry::load('config')->load_group_conversation) ?>">
+                <li class="load_aside d-none force_trigger_onload" load="group_members" data-group_id="<?php echo (Registry::load('config')->load_group_conversation) ?>">
                     <div class="menu_item">
                         <span class="icon">
                             <i class="iconic_groups"></i>
                         </span>
                         <span class="title">
-                            <?php echo(Registry::load('strings')->members) ?>
+                            <?php echo (Registry::load('strings')->members) ?>
                         </span>
                     </div>
                 </li>
-                <?php
+            <?php
             }
             ?>
 
             <?php
             if (role(['permissions' => ['private_conversations' => 'view_private_chats']])) {
-                ?>
+            ?>
                 <li class="load_aside realtime_module load_private_conversations" load="private_conversations" module="private_conversations">
                     <div class="menu_item">
                         <span class="icon">
@@ -147,10 +147,10 @@
                         <span class="unread"></span>
                     </div>
                 </li>
-                <?php
+            <?php
             }
             if (role(['permissions' => ['site_users' => 'view_online_users']])) {
-                ?>
+            ?>
                 <li class="load_aside realtime_module load_online_users" module="online_users" load="online">
                     <div class="menu_item">
                         <span class="icon">
@@ -165,7 +165,7 @@
             }
             if (Registry::load('settings')->people_nearby_feature === 'enable') {
                 if (role(['permissions' => ['site_users' => 'view_nearby_users']])) {
-                    ?>
+                ?>
                     <li class="load_aside load_nearby_users" load="nearby_users">
                         <div class="menu_item">
                             <span class="icon">
@@ -176,13 +176,13 @@
                             </span>
                         </div>
                     </li>
-                    <?php
+                <?php
                 }
             }
 
             if (Registry::load('settings')->friend_system === 'enable') {
                 if (role(['permissions' => ['friend_system' => 'view_friends']])) {
-                    ?>
+                ?>
                     <li class="load_aside realtime_module load_friends" module="friends" load="friends">
                         <div class="menu_item">
                             <span class="icon">
@@ -194,61 +194,61 @@
                             <span class="unread"></span>
                         </div>
                     </li>
-                    <?php
+            <?php
                 }
             }
             ?>
 
 
             <?php if (role(['permissions' => ['site_users' => ['view_site_users', 'block_users', 'ignore_users']], 'condition' => 'OR'])) {
-                ?>
+            ?>
                 <li class="has_child">
                     <div class="menu_item">
                         <span class="icon">
                             <i class="iconic_users"></i>
                         </span>
                         <span class="title">
-                            <?php echo(Registry::load('strings')->site_users) ?>
+                            <?php echo (Registry::load('strings')->site_users) ?>
                         </span>
                     </div>
                     <div class="child_menu">
                         <ul>
                             <?php if (role(['permissions' => ['site_users' => 'view_site_users']])) {
-                                ?>
-                                <li class="load_aside load_site_users" load="site_users"><?php echo(Registry::load('strings')->view_all) ?></li>
-                                <?php
+                            ?>
+                                <li class="load_aside load_site_users" load="site_users"><?php echo (Registry::load('strings')->view_all) ?></li>
+                            <?php
                             }
 
                             if (role(['permissions' => ['site_users' => 'approve_users']])) {
-                                ?>
-                                <li class='load_aside' load="site_users" filter="pending_approval" skip_filter_title="true"><?php echo(Registry::load('strings')->pending_approval) ?></li>
-                                <?php
+                            ?>
+                                <li class='load_aside' load="site_users" filter="pending_approval" skip_filter_title="true"><?php echo (Registry::load('strings')->pending_approval) ?></li>
+                            <?php
                             }
                             if (role(['permissions' => ['site_users' => 'block_users']])) {
-                                ?>
-                                <li class='load_aside' load="blocked"><?php echo(Registry::load('strings')->blocked) ?></li>
-                                <?php
+                            ?>
+                                <li class='load_aside' load="blocked"><?php echo (Registry::load('strings')->blocked) ?></li>
+                            <?php
                             }
                             if (role(['permissions' => ['site_users' => 'ignore_users']])) {
-                                ?>
-                                <li class='load_aside' load="ignored"><?php echo(Registry::load('strings')->ignored) ?></li>
-                                <?php
+                            ?>
+                                <li class='load_aside' load="ignored"><?php echo (Registry::load('strings')->ignored) ?></li>
+                            <?php
                             }
                             if (role(['permissions' => ['site_users' => 'import_users']])) {
-                                ?>
-                                <li class='load_form' form="import_users"><?php echo(Registry::load('strings')->import_users) ?></li>
-                                <?php
+                            ?>
+                                <li class='load_form' form="import_users"><?php echo (Registry::load('strings')->import_users) ?></li>
+                            <?php
                             }
                             if (role(['permissions' => ['site_users' => 'set_fake_online_users']])) {
-                                ?>
-                                <li class='load_aside' load="fake_online_users"><?php echo(Registry::load('strings')->fake_online_users) ?></li>
-                                <?php
+                            ?>
+                                <li class='load_aside' load="fake_online_users"><?php echo (Registry::load('strings')->fake_online_users) ?></li>
+                            <?php
                             }
                             ?>
                         </ul>
                     </div>
                 </li>
-                <?php
+            <?php
             }
             ?>
             <?php
@@ -319,7 +319,7 @@
             }
 
             if (!empty($module_permissions)) {
-                ?>
+            ?>
                 <li class="has_child">
                     <div class="menu_item">
                         <span class="icon">
@@ -332,86 +332,97 @@
                     <div class="child_menu">
                         <ul>
                             <?php if (isset($module_permissions['custom_menu'])) {
-                                ?>
+                            ?>
                                 <li class="load_aside" load="custom_menu_items"><?php echo Registry::load('strings')->custom_menu ?></li>
-                                <?php
-                            } if (isset($module_permissions['custom_fields'])) {
-                                ?>
-                                <li class="load_aside" load="custom_fields"><?php echo(Registry::load('strings')->custom_fields) ?></li>
-                                <?php
-                            } if (isset($module_permissions['custom_pages'])) {
-                                ?>
-                                <li class="load_aside" load="custom_pages"><?php echo(Registry::load('strings')->custom_pages) ?></li>
-                                <?php
-                            } if (isset($module_permissions['sticker_packs'])) {
-                                ?>
-                                <li class="load_aside" load="sticker_packs"><?php echo(Registry::load('strings')->sticker_packs) ?></li>
-                                <?php
-                            } if (isset($module_permissions['avatars'])) {
-                                ?>
-                                <li class="load_aside" load="avatars"><?php echo(Registry::load('strings')->avatars) ?></li>
-                                <?php
-                            } if (isset($module_permissions['languages'])) {
-                                ?>
-                                <li class="load_aside" load="languages"><?php echo(Registry::load('strings')->languages) ?></li>
-                                <?php
-                            } if (isset($module_permissions['site_roles'])) {
-                                ?>
-                                <li class="load_aside" load="site_roles"><?php echo(Registry::load('strings')->site_roles) ?></li>
-                                <?php
-                            } if (isset($module_permissions['social_login_providers'])) {
-                                ?>
-                                <li class="load_aside" load="social_login_providers"><?php echo(Registry::load('strings')->social_login) ?></li>
-                                <?php
-                            } if (isset($module_permissions['audio_player'])) {
-                                ?>
-                                <li class="load_aside" load="audio_player_contents"><?php echo(Registry::load('strings')->audio_player) ?></li>
-                                <?php
-                            } if (isset($module_permissions['site_adverts'])) {
-                                ?>
-                                <li class="load_aside" load="site_adverts"><?php echo(Registry::load('strings')->site_adverts) ?></li>
-                                <?php
-                            } if (isset($module_permissions['group_roles'])) {
-                                ?>
-                                <li class="load_aside" load="group_roles"><?php echo(Registry::load('strings')->group_roles) ?></li>
-                                <?php
-                            } if (isset($module_permissions['badges'])) {
-                                ?>
-                                <li class="load_aside" load="badges"><?php echo(Registry::load('strings')->badges) ?></li>
-                                <?php
+                            <?php
+                            }
+                            if (isset($module_permissions['custom_fields'])) {
+                            ?>
+                                <li class="load_aside" load="custom_fields"><?php echo (Registry::load('strings')->custom_fields) ?></li>
+                            <?php
+                            }
+                            if (isset($module_permissions['custom_pages'])) {
+                            ?>
+                                <li class="load_aside" load="custom_pages"><?php echo (Registry::load('strings')->custom_pages) ?></li>
+                            <?php
+                            }
+                            if (isset($module_permissions['sticker_packs'])) {
+                            ?>
+                                <li class="load_aside" load="sticker_packs"><?php echo (Registry::load('strings')->sticker_packs) ?></li>
+                            <?php
+                            }
+                            if (isset($module_permissions['avatars'])) {
+                            ?>
+                                <li class="load_aside" load="avatars"><?php echo (Registry::load('strings')->avatars) ?></li>
+                            <?php
+                            }
+                            if (isset($module_permissions['languages'])) {
+                            ?>
+                                <li class="load_aside" load="languages"><?php echo (Registry::load('strings')->languages) ?></li>
+                            <?php
+                            }
+                            if (isset($module_permissions['site_roles'])) {
+                            ?>
+                                <li class="load_aside" load="site_roles"><?php echo (Registry::load('strings')->site_roles) ?></li>
+                            <?php
+                            }
+                            if (isset($module_permissions['social_login_providers'])) {
+                            ?>
+                                <li class="load_aside" load="social_login_providers"><?php echo (Registry::load('strings')->social_login) ?></li>
+                            <?php
+                            }
+                            if (isset($module_permissions['audio_player'])) {
+                            ?>
+                                <li class="load_aside" load="audio_player_contents"><?php echo (Registry::load('strings')->audio_player) ?></li>
+                            <?php
+                            }
+                            if (isset($module_permissions['site_adverts'])) {
+                            ?>
+                                <li class="load_aside" load="site_adverts"><?php echo (Registry::load('strings')->site_adverts) ?></li>
+                            <?php
+                            }
+                            if (isset($module_permissions['group_roles'])) {
+                            ?>
+                                <li class="load_aside" load="group_roles"><?php echo (Registry::load('strings')->group_roles) ?></li>
+                            <?php
+                            }
+                            if (isset($module_permissions['badges'])) {
+                            ?>
+                                <li class="load_aside" load="badges"><?php echo (Registry::load('strings')->badges) ?></li>
+                            <?php
                             }
                             if (isset($module_permissions['firewall'])) {
-                                ?>
+                            ?>
                                 <li class="load_form" form="firewall" todo="edit">
-                                    <?php echo(Registry::load('strings')->firewall) ?>
+                                    <?php echo (Registry::load('strings')->firewall) ?>
                                 </li>
-                                <?php
+                            <?php
                             }
                             if (isset($module_permissions['email_validator'])) {
-                                ?>
+                            ?>
                                 <li class="load_form" form="email_validator" todo="edit">
-                                    <?php echo(Registry::load('strings')->email_validator) ?>
+                                    <?php echo (Registry::load('strings')->email_validator) ?>
                                 </li>
-                                <?php
+                            <?php
                             }
                             if (isset($module_permissions['profanity_filter'])) {
-                                ?>
+                            ?>
                                 <li class="load_form" form="profanity_filter" todo="edit">
-                                    <?php echo(Registry::load('strings')->profanity_filter) ?>
+                                    <?php echo (Registry::load('strings')->profanity_filter) ?>
                                 </li>
-                                <?php
+                            <?php
                             }
                             if (isset($module_permissions['cron_jobs'])) {
-                                ?>
+                            ?>
                                 <li class="load_aside" load="cron_jobs">
                                     <?php echo Registry::load('strings')->cron_jobs ?>
                                 </li>
-                                <?php
+                            <?php
                             } ?>
                         </ul>
                     </div>
                 </li>
-                <?php
+            <?php
             }
             ?>
 
@@ -436,7 +447,7 @@
             }
 
             if (!empty($settings_permissions)) {
-                ?>
+            ?>
                 <li class="has_child">
                     <div class="menu_item">
                         <span class="icon">
@@ -450,14 +461,14 @@
                         <ul>
                             <?php
                             if (isset($settings_permissions['customizer'])) {
-                                ?>
+                            ?>
                                 <li class="load_form" form="appearance" todo="edit">
-                                    <?php echo(Registry::load('strings')->appearance) ?>
+                                    <?php echo (Registry::load('strings')->appearance) ?>
                                 </li>
-                                <?php
+                            <?php
                             }
                             if (isset($settings_permissions['core_settings'])) {
-                                ?>
+                            ?>
                                 <li class="load_form" form="settings" data-category="general_settings">
                                     <?php echo Registry::load('strings')->general_settings ?>
                                 </li>
@@ -491,74 +502,74 @@
                                 </li>
 
                                 <li class="load_form" form="landing_page" todo="edit">
-                                    <?php echo(Registry::load('strings')->landing_page) ?>
+                                    <?php echo (Registry::load('strings')->landing_page) ?>
                                 </li>
 
                                 <li class="load_form" form="welcome_screen" todo="edit">
-                                    <?php echo(Registry::load('strings')->welcome_screen) ?>
+                                    <?php echo (Registry::load('strings')->welcome_screen) ?>
                                 </li>
-                                <?php
+                            <?php
                             }
                             if (isset($settings_permissions['customizer'])) {
-                                ?>
+                            ?>
                                 <li class="load_form" form="custom_css" todo="edit" enlarge=true>
-                                    <?php echo(Registry::load('strings')->custom_css) ?>
+                                    <?php echo (Registry::load('strings')->custom_css) ?>
                                 </li>
                                 <li class="load_form" form="custom_js" todo="edit" enlarge=true>
-                                    <?php echo(Registry::load('strings')->custom_js) ?>
+                                    <?php echo (Registry::load('strings')->custom_js) ?>
                                 </li>
-                                <?php
+                            <?php
                             }
 
                             if (isset($settings_permissions['slideshows'])) {
-                                ?>
+                            ?>
                                 <li class="load_aside" load="slideshows">
-                                    <?php echo(Registry::load('strings')->slideshows) ?>
+                                    <?php echo (Registry::load('strings')->slideshows) ?>
                                 </li>
-                                <?php
+                            <?php
                             }
 
                             if (isset($settings_permissions['core_settings'])) {
-                                ?>
+                            ?>
                                 <li class="load_form" form="rebuild_cache">
-                                    <?php echo(Registry::load('strings')->rebuild_cache) ?>
+                                    <?php echo (Registry::load('strings')->rebuild_cache) ?>
                                 </li>
                                 <li class="load_form" form="system_info">
-                                    <?php echo(Registry::load('strings')->system_info) ?>
+                                    <?php echo (Registry::load('strings')->system_info) ?>
                                 </li>
-                                <?php
+                            <?php
                             }
                             if (isset($settings_permissions['headers_footers'])) {
-                                ?>
+                            ?>
 
                                 <li class="load_form" form="headers_footers" todo="edit" enlarge=true>
                                     <?php echo Registry::load('strings')->headers_footers ?>
                                 </li>
-                                <?php
+                            <?php
                             }
                             ?>
                         </ul>
                     </div>
                 </li>
-                <?php
+            <?php
             }
             ?>
 
             <?php if (role(['permissions' => ['storage' => 'super_privileges']])) {
-                ?>
+            ?>
                 <li class="load_aside" load="storage">
                     <div class="menu_item">
                         <span class="icon">
                             <i class="iconic_storage"></i>
                         </span>
                         <span class="title">
-                            <?php echo(Registry::load('strings')->storage) ?>
+                            <?php echo (Registry::load('strings')->storage) ?>
                         </span>
                     </div>
                 </li>
-                <?php
+            <?php
             } else if (role(['permissions' => ['storage' => 'access_storage']])) {
-                ?>
+            ?>
 
                 <li class="load_aside" load="site_user_files">
                     <div class="menu_item">
@@ -566,39 +577,39 @@
                             <i class="iconic_storage"></i>
                         </span>
                         <span class="title">
-                            <?php echo(Registry::load('strings')->storage) ?>
+                            <?php echo (Registry::load('strings')->storage) ?>
                         </span>
                     </div>
                 </li>
-                <?php
+            <?php
             } ?>
 
             <?php if (role(['permissions' => ['complaints' => ['track_status', 'review_complaints']], 'condition' => 'OR'])) {
-                ?>
+            ?>
                 <li class="load_aside realtime_module load_complaints" module="complaints" load="complaints">
                     <div class="menu_item">
                         <span class="icon">
                             <i class="iconic_complaints"></i>
                         </span>
                         <span class="title">
-                            <?php echo(Registry::load('strings')->complaints) ?>
+                            <?php echo (Registry::load('strings')->complaints) ?>
                         </span>
                         <span class="unread"></span>
                     </div>
                 </li>
-                <?php
+            <?php
             } ?>
 
             <?php
             if (role(['permissions' => ['audio_player' => 'listen_music']])) {
-                ?>
+            ?>
                 <li class="load_audio_player">
                     <div class="menu_item">
                         <span class="icon">
                             <i class="iconic_music"></i>
                         </span>
                         <span class="title">
-                            <?php echo(Registry::load('strings')->audio_player) ?>
+                            <?php echo (Registry::load('strings')->audio_player) ?>
                         </span>
                     </div>
                 </li>
@@ -608,18 +619,18 @@
             if (!empty(Registry::load('current_user')->site_role_attribute)) {
                 if (Registry::load('current_user')->site_role_attribute === 'guest_users') {
                     if (Registry::load('settings')->allow_guest_users_create_accounts === 'yes') {
-                        ?>
+                ?>
                         <li class="load_form" form="upgrade_guest_account">
                             <div class="menu_item">
                                 <span class="icon">
                                     <i class="iconic_form-tick"></i>
                                 </span>
                                 <span class="title">
-                                    <?php echo(Registry::load('strings')->create_account) ?>
+                                    <?php echo (Registry::load('strings')->create_account) ?>
                                 </span>
                             </div>
                         </li>
-                        <?php
+                <?php
                     }
                 }
             }
@@ -632,11 +643,11 @@
                             <i class="iconic_login"></i>
                         </span>
                         <span class="title">
-                            <?php echo(Registry::load('strings')->login_as_admin) ?>
+                            <?php echo (Registry::load('strings')->login_as_admin) ?>
                         </span>
                     </div>
                 </li>
-                <?php
+            <?php
             }
             ?>
 
@@ -646,13 +657,29 @@
             }
             ?>
 
+            <?php if (Registry::load('current_user')->site_role_attribute == "administrators") {
+            ?>
+                <li class="load_aside" load="extra_admin">
+                    <div class="menu_item">
+                        <span class="icon">
+                            <i class="bi-person-lines-fill"></i>
+                        </span>
+                        <span class="title">
+                            <?php echo (Registry::load('strings')->extra_admin) ?>
+                        </span>
+                    </div>
+                </li>
+            <?php
+            }
+            ?>
+
             <?php include 'layouts/chat_page/custom_menu_items_bottom.php'; ?>
         </ul>
     </div>
     <div class="bottom has_child side_navigation_footer">
         <div class="user_info">
             <span class="left">
-                <img class="logged_in_user_avatar" src="<?php echo(get_image(['from' => 'site_users/profile_pics', 'search' => Registry::load('current_user')->id, 'gravatar' => Registry::load('current_user')->email_address])) ?>">
+                <img class="logged_in_user_avatar" src="<?php echo (get_image(['from' => 'site_users/profile_pics', 'search' => Registry::load('current_user')->id, 'gravatar' => Registry::load('current_user')->email_address])) ?>">
             </span>
             <span class="center">
                 <span class="title logged_in_user_name"><?php echo Registry::load('current_user')->name; ?></span>
@@ -669,38 +696,38 @@
             <ul>
                 <?php
                 if (role(['permissions' => ['profile' => 'edit_profile']])) {
-                    ?>
-                    <li class='load_form' form='site_users' data-user_id="<?php echo(Registry::load('current_user')->id); ?>"><?php echo(Registry::load('strings')->edit_profile) ?></li>
-                    <?php
+                ?>
+                    <li class='load_form' form='site_users' data-user_id="<?php echo (Registry::load('current_user')->id); ?>"><?php echo (Registry::load('strings')->edit_profile) ?></li>
+                <?php
                 }
                 ?>
-                <li class='get_info' user_id="<?php echo(Registry::load('current_user')->id); ?>"><?php echo(Registry::load('strings')->view_profile) ?></li>
+                <li class='get_info' user_id="<?php echo (Registry::load('current_user')->id); ?>"><?php echo (Registry::load('strings')->view_profile) ?></li>
 
                 <?php
                 if (role(['permissions' => ['profile' => 'go_offline']])) {
                     if (empty(Registry::load('current_user')->offline_mode)) {
-                        ?>
-                        <li class='api_request' data-update="site_users_settings" data-offline_mode='go_offline'><?php echo(Registry::load('strings')->go_offline) ?></li>
-                        <?php
+                ?>
+                        <li class='api_request' data-update="site_users_settings" data-offline_mode='go_offline'><?php echo (Registry::load('strings')->go_offline) ?></li>
+                    <?php
                     } else {
-                        ?>
-                        <li class='api_request' data-update="site_users_settings" data-offline_mode='go_online'><?php echo(Registry::load('strings')->go_online) ?></li>
-                        <?php
+                    ?>
+                        <li class='api_request' data-update="site_users_settings" data-offline_mode='go_online'><?php echo (Registry::load('strings')->go_online) ?></li>
+                    <?php
                     }
                 }
                 if (role(['permissions' => ['profile' => 'switch_color_scheme']])) {
                     if (Registry::load('current_user')->color_scheme === 'dark_mode') {
-                        ?>
-                        <li class='api_request'data-update="site_users_settings" data-color_scheme='light_mode'><?php echo(Registry::load('strings')->light_mode) ?></li>
-                        <?php
+                    ?>
+                        <li class='api_request' data-update="site_users_settings" data-color_scheme='light_mode'><?php echo (Registry::load('strings')->light_mode) ?></li>
+                    <?php
                     } else {
-                        ?>
-                        <li class='api_request' data-update="site_users_settings" data-color_scheme='dark_mode'><?php echo(Registry::load('strings')->dark_mode) ?></li>
-                        <?php
+                    ?>
+                        <li class='api_request' data-update="site_users_settings" data-color_scheme='dark_mode'><?php echo (Registry::load('strings')->dark_mode) ?></li>
+                <?php
                     }
                 }
                 ?>
-                <li class="api_request" data-remove="login_session"><?php echo(Registry::load('strings')->logout) ?></li>
+                <li class="api_request" data-remove="login_session"><?php echo (Registry::load('strings')->logout) ?></li>
             </ul>
         </div>
     </div>
