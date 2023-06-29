@@ -6,7 +6,10 @@ $('.main').on('click', '.show_statistics', function(e) {
 });
 
 function show_statistics() {
-
+    // if(roomID !== undefined) {
+    //     zg.logoutRoom(roomID)
+    //     roomID = undefined;
+    // }
     $('.main .middle > .content > .statistics > .contents').html('');
     $('.main .middle > .content > .statistics > .loader').show();
     $('.main .middle > .content > div').addClass('d-none');

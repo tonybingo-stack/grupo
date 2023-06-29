@@ -1,3 +1,4 @@
+<script src="<?php echo Registry::load('config')->site_url.'assets/thirdparty/zego/dist_js/ZegoExpressWebRTC-2.25.2.js'.$cache_timestamp; ?>"></script>
 <script src="<?php echo Registry::load('config')->site_url.'assets/thirdparty/zego/zego-zim-web@2.5.0_index.js'.$cache_timestamp; ?>"></script>
 <script src="<?php echo Registry::load('config')->site_url.'assets/thirdparty/zego/zego-uikit-prebuilt.js'.$cache_timestamp; ?>"></script>
 <script src="<?php echo Registry::load('config')->site_url.'assets/js/combined_js_chat_page.js'.$cache_timestamp; ?>"></script>

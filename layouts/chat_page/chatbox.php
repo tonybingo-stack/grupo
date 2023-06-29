@@ -52,6 +52,8 @@ if (Registry::load('settings')->show_timestamp_on_mouseover === 'enable') {
         <span class="userId d-none"><?php echo(Registry::load('current_user')->id); ?></span>
         <span class="userName d-none"><?php echo(Registry::load('current_user')->name); ?></span>
         <span class="toggle_search_messages"><i class="bi bi-search"></i></span>
+        <div id="remote_audio" class="d-none"></div>
+        <div id="local_audio" class="d-none"></div>
     </div>
 
     <?php

@@ -82,6 +82,9 @@ if (isset($data["load"])) {
 } else if (isset($data["realtime"])) {
     include 'fns/realtime/load.php';
     realtime($data);
+} else if (isset($data["zego"])) {
+    include 'fns/zego/load.php';
+    zego($data);
 }
 
 ?>
