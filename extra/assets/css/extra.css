@@ -1,0 +1,88 @@
+
+
+.swr-grupo .rside > .top > .right > i.langswitch {
+	float: right;
+}
+
+span#credit {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.swr-grupo .aside > .head > .icons > i.udolist span#credit {
+    margin-top: 4px;
+    font-size: 15px;
+    float: left;
+    margin-right: 5px;
+    width: 90px;
+}
+
+.swr-grupo .aside > .head > .icons > i.udolist span#credit img {
+    height: 21px;
+}
+
+.swr-grupo .panel > .room > .msgs > li.system.system_big div > .msg > i {
+    font-size: 13px;
+}
+
+span#reportUser {
+    background: red;
+    width: fit-content;
+    font-weight: bolder;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: auto;
+    cursor: pointer;
+}
+.iziModal-header.iziModal-noSubtitle {
+    display: block;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 0px;
+    background: linear-gradient(to right,#E91E63,#9C27B0)!important;
+}
+img.subsIcon {
+    height: 19px;
+}
+.iziModal .iziModal-header-subtitle, .iziModal .iziModal-header-title {
+    font-family: 'roboto-slab';
+    text-align: center;
+    font-size: 14px!important;
+    font-weight: 600!important;
+}
+
+img.addonSystemAlert {
+    height: 20px;
+    margin-right: 10px;
+}
+
+span.userBabgeArea {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+span.userBabge {
+    background: linear-gradient(to right,#632158,#5907ff);
+    color: white;
+    font-size: 14px;
+    width: 100px;
+    display: block;
+    border-radius: 5px;
+    margin: auto;
+    text-align: center;
+}
+.swr-grupo .aside > .content > .list > li > div > .center {
+    position: relative;
+}
+
+.swr-grupo .aside > .content > .list > li > div > .center > span.userBabge {
+    position: absolute;
+    top: 24px;
+    left: 70px;
+    color: white!important;
+}

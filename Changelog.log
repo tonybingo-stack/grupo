@@ -1,4 +1,284 @@
 installer.sql
-    added new field credits, agent_rate
+    
+users table add new 4 coloums 
+ALTER TABLE `gr_site_users` ADD `credits` INT NOT NULL DEFAULT '0' AFTER `total_friends`, ADD `subs` INT NOT NULL DEFAULT '0' AFTER `credits`, ADD `subs_end` INT NOT NULL DEFAULT '0' AFTER `subs`, ADD `agency` BOOL NOT NULL DEFAULT '0' AFTER `social_login_provider_id`,ADD `agency_rate` DOUBLE NOT NULL DEFAULT '0.1' AFTER `agency`, ADD `agency_coins` INT NOT NULL DEFAULT 0 AFTER `agency_rate`, ADD `depict` INT NOT NULL DEFAULT '0' AFTER `encrypt_type`,ADD `extra` INT NOT NULL DEFAULT '0' AFTER `depict`;
 
-Added extra admin folder
+Added new table
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_credits`
+--
+
+CREATE TABLE `gr_credits` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `app_in_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `credits` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_credit_used`
+--
+
+CREATE TABLE `gr_credit_used` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `details` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `credit` int(11) NOT NULL,
+  `used_time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_order_records`
+--
+
+CREATE TABLE `gr_order_records` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `details` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `wilBeAdded` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `method` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_details` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `prices` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `action_time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_subs`
+--
+
+CREATE TABLE `gr_subs` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `app_in_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `free_credit` int(11) NOT NULL DEFAULT 0,
+  `monthly_fee` int(11) NOT NULL,
+  `annual_fee` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_permissions`
+--
+
+CREATE TABLE `gr_permissions` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `groups` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `features` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `files` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `users` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `languages` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sys` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `roles` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fields` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `privatemsg` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `autodel` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'off',
+  `autounjoin` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'off',
+  `xtras` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_gifts`
+--
+
+CREATE TABLE `gr_gifts` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `credits` int(11) NOT NULL,
+  `sound` int(11) NOT NULL DEFAULT 0,
+  `status` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_subs`
+--
+
+CREATE TABLE `gr_subs` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `app_in_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `free_credit` int(11) NOT NULL DEFAULT 0,
+  `monthly_fee` int(11) NOT NULL,
+  `annual_fee` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `gr_subs`
+--
+
+INSERT INTO `gr_subs` (`id`, `name`, `app_in_id`, `free_credit`, `monthly_fee`, `annual_fee`, `status`) VALUES
+(1, 'Iron Lv.1', '', 0, 8, 55, 0),
+(2, 'Bronze Lv.2', '', 0, 11, 90, 0),
+(3, 'Silver Lv.3', '', 15, 15, 120, 1),
+(5, 'Gold Lv.4', '', 20, 20, 200, 1),
+(6, 'Platinum Lv.5', '', 40, 30, 300, 1),
+(7, 'Emerald Lv.6', '', 30, 30, 250, 1),
+(8, 'Diamond Lv.7', '', 40, 40, 350, 1),
+(9, 'Master Lv.8', '', 60, 60, 500, 1),
+(10, 'GrMaster Lv.9', '', 70, 70, 650, 1),
+(11, 'Chalenger Lv.10', '', 100, 100, 850, 1),
+(12, 'Undefined Lv.11', '', 100, 100, 850, 1),
+(14, 'المحارب', '', 20, 10, 80, 1),
+(15, 'فايكنج', '', 30, 5, 30, 1),
+(16, 'الفارس', '', 10, 5, 40, 1),
+(17, 'Eagle', '', 10, 5, 50, 1),
+(18, 'Blue', '', 10, 5, 40, 1),
+(19, 'Eagle2', '', 5, 5, 40, 1),
+(20, 'knight', '', 5, 5, 40, 1),
+(21, 'knight2', '', 5, 5, 40, 1),
+(22, 'knigh3', '', 5, 5, 50, 1),
+(23, 'Greatknigh', '', 4, 5, 40, 1),
+(24, 'angel', '', 5, 5, 40, 0),
+(25, 'knight5', '', 4, 4, 4, 1),
+(26, 'knight6', '', 1, 6, 30, 1),
+(27, 'knight7', '', 5, 5, 4, 1),
+(28, 'knight8', '', 4, 4, 4, 1),
+(29, 'knight9', '', 5, 5, 65, 1),
+(30, 'knight9', '', 4, 4, 4, 1),
+(31, 'butterfly', '', 4, 4, 4, 1),
+(32, 'goldknight', '', 4, 4, 4, 1),
+(33, 'Butterfly', '', 5, 5, 5, 0),
+(34, 'Knight Lv.1', '', 0, 5, 40, 1),
+(35, 'Knight Lv.2', '', 0, 6, 50, 1),
+(36, 'Knight Lv.3', '', 0, 7, 60, 1),
+(37, 'Knight Lv.4', '', 10, 8, 60, 1),
+(38, 'Knight Lv.5', '', 10, 9, 70, 1),
+(39, 'Knight Lv.6', '', 1, 10, 80, 1),
+(40, 'Knight Lv.7', '', 10, 11, 85, 1),
+(41, 'Knight Lv.8', '', 10, 12, 100, 1);
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_utrack`
+--
+
+CREATE TABLE `gr_utrack` (
+  `id` bigint(20) NOT NULL,
+  `ip` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dev` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `uid` bigint(20) DEFAULT NULL,
+  `status` int(10) DEFAULT 0,
+  `tms` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_options`
+--
+
+CREATE TABLE `gr_options` (
+  `id` bigint(20) NOT NULL,
+  `type` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `v1` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `v2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `v3` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `v4` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `v5` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `v6` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `v7` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `tms` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_gift_sound`
+--
+
+CREATE TABLE `gr_gift_sound` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `sound` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gr_gift_sound`
+--
+
+INSERT INTO `gr_gift_sound` (`id`, `name`, `sound`) VALUES
+(1, 'd', '81af0b3f64b6427d4edf389724f5eef3.mp3'),
+(2, 'other 1', 'a08414a89cba52ecceb999dcf97f8c96.mp3'),
+(3, 'Nuclear', 'e7f7408cc2d1a494d0220d291f19bd73.wav'),
+(4, 'Nuclear', '1ec98c0a2cae166ca560a20b09b7c9f5.wav'),
+(5, 'plane', '922431ab2da9ac7631064dc109b8e65b.wav'),
+(6, 'Frosting', 'caf49bb2edc46eb7faefa3ffc8385a79.wav'),
+(7, 'Frosting', '24f4443f2eebcd34a1781c6e1f7d43eb.wav'),
+(8, 'Kiss of Death', 'd93fc2d6281c0ec974f72651039f85be.mp3'),
+(9, 'Dancing', '6edce75ada1e1d115f74d437f0389630.mp3'),
+(10, 'Shoot me', '69b50a55ae0a6c663f3cfd3b0f559a70.mp3'),
+(11, 'Grendizer', '482f1c058562b0470b6fd9c848a4bc70.mp3'),
+(12, 'Time Bomb', 'fa8ce76b27f69f5a75cb96caf039a7fa.mp3'),
+(13, 'Gold Box', '652d2e5caaad6aa6f3d0ea4688d074d3.mp3'),
+(14, 'Birthday', 'cab00e86b70c159fcdf032caf3583a96.mp3'),
+(15, 'Ferrari', 'b90348c1a7161a0e7b67964dfb29adea.mp3'),
+(16, 'Love Rose', 'd924a4d62f90b77b59fac1c9669b5b85.mp3'),
+(17, '3aref leh', '4d5ac791258ef20e871b3859c876979c.mp3'),
+(18, 'Lord of the Rings', '77205d53751ed651e4a4c482472512ac.mp3'),
+(19, 'حبك هوا', '34df6c47d495100a67494d9a3d4666a1.mp3');
+
+--
+-- Table structure for table `gr_agency_earnings`
+--
+
+CREATE TABLE `gr_agency_earnings` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `coins` float NOT NULL,
+  `details` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `paidID` int(11) NOT NULL DEFAULT 0,
+  `earn_time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_paidChannelLogs`
+--
+
+CREATE TABLE `gr_paidChannelLogs` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `channel` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `used_credits` int(11) NOT NULL,
+  `action_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gr_withdrawals`
+--
+
+CREATE TABLE `gr_withdrawals` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `credits` int(11) NOT NULL,
+  `earnedMoney` float NOT NULL,
+  `paypal` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `details` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `requestDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `sentDate` timestamp NULL DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

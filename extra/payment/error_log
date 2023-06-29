@@ -1,0 +1,185 @@
+[10-Aug-2021 05:13:43 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"issue":"ORDER_NOT_APPROVED","description":"Payer has not yet approved the Order for payment. Please redirect the payer to the 'rel':'approve' url returned as part of the HATEOAS links within the Create Order call or provide a valid payment_source in the request."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"fc69224d48f14","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-ORDER_NOT_APPROVED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(13): PayPalHttp\HttpClient->execute(Object in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:15:57 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"RESOURCE_NOT_FOUND","details":[{"issue":"INVALID_RESOURCE_ID","description":"Specified resource ID does not exist. Please check the resource ID and try again."}],"message":"The specified resource does not exist.","debug_id":"384bb52870022","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-INVALID_RESOURCE_ID","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(13): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:16:00 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"RESOURCE_NOT_FOUND","details":[{"issue":"INVALID_RESOURCE_ID","description":"Specified resource ID does not exist. Please check the resource ID and try again."}],"message":"The specified resource does not exist.","debug_id":"adf24ccda5098","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-INVALID_RESOURCE_ID","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(13): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:16:33 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"RESOURCE_NOT_FOUND","details":[{"issue":"INVALID_RESOURCE_ID","description":"Specified resource ID does not exist. Please check the resource ID and try again."}],"message":"The specified resource does not exist.","debug_id":"c64a335d7a195","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-INVALID_RESOURCE_ID","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(13): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:17:08 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"RESOURCE_NOT_FOUND","details":[{"issue":"INVALID_RESOURCE_ID","description":"Specified resource ID does not exist. Please check the resource ID and try again."}],"message":"The specified resource does not exist.","debug_id":"2e419926cf5f","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-INVALID_RESOURCE_ID","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(13): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:18:00 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"RESOURCE_NOT_FOUND","details":[{"issue":"INVALID_RESOURCE_ID","description":"Specified resource ID does not exist. Please check the resource ID and try again."}],"message":"The specified resource does not exist.","debug_id":"124d05942a22d","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-INVALID_RESOURCE_ID","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(16): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:21:03 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"issue":"ORDER_NOT_APPROVED","description":"Payer has not yet approved the Order for payment. Please redirect the payer to the 'rel':'approve' url returned as part of the HATEOAS links within the Create Order call or provide a valid payment_source in the request."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"68c88bc871cb6","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-ORDER_NOT_APPROVED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(16): PayPalHttp\HttpClient->execute(Object in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:45:47 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"issue":"ORDER_ALREADY_CAPTURED","description":"Order already captured.If 'intent=CAPTURE' only one capture per order is allowed."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"fc4e63f8defc6","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-ORDER_ALREADY_CAPTURED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(39): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:46:24 UTC] PHP Notice:  Undefined variable: willAdd in /home/sabayachat/public_html/chat2/extra/payment/return.php on line 32
+[10-Aug-2021 05:46:26 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"issue":"ORDER_ALREADY_CAPTURED","description":"Order already captured.If 'intent=CAPTURE' only one capture per order is allowed."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"e32c84d7c21f3","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-ORDER_ALREADY_CAPTURED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(39): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:46:41 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"issue":"ORDER_ALREADY_CAPTURED","description":"Order already captured.If 'intent=CAPTURE' only one capture per order is allowed."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"94af97d3c4b80","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-ORDER_ALREADY_CAPTURED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(39): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:47:04 UTC] PHP Fatal error:  Uncaught Error: Cannot use object of type stdClass as array in /home/sabayachat/public_html/chat2/extra/payment/return.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/return.php on line 32
+[10-Aug-2021 05:47:21 UTC] PHP Fatal error:  Uncaught Error: Cannot use object of type stdClass as array in /home/sabayachat/public_html/chat2/extra/payment/return.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/return.php on line 32
+[10-Aug-2021 05:47:38 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"issue":"ORDER_ALREADY_CAPTURED","description":"Order already captured.If 'intent=CAPTURE' only one capture per order is allowed."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"2a7c047d6b084","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-ORDER_ALREADY_CAPTURED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(39): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:55:34 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"issue":"ORDER_ALREADY_CAPTURED","description":"Order already captured.If 'intent=CAPTURE' only one capture per order is allowed."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"e53010282f387","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-ORDER_ALREADY_CAPTURED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(38): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:55:53 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"issue":"ORDER_ALREADY_CAPTURED","description":"Order already captured.If 'intent=CAPTURE' only one capture per order is allowed."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"43205e356342f","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-ORDER_ALREADY_CAPTURED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(38): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[10-Aug-2021 05:55:57 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"issue":"ORDER_ALREADY_CAPTURED","description":"Order already captured.If 'intent=CAPTURE' only one capture per order is allowed."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"b978d8b65ab9a","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-ORDER_ALREADY_CAPTURED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat2/extra/payment/return.php(38): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCaptureRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat2/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[21-Sep-2021 09:51:30 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='167'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"ef8b84181b54f","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[21-Sep-2021 09:51:35 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='168'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"5dbd2cfea81b5","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[21-Sep-2021 09:52:04 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='169'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"c8d5735193579","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[21-Sep-2021 09:52:50 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='170'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"39cd60927f3f4","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[21-Sep-2021 09:52:54 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='171'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"37975b5f82320","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[21-Sep-2021 09:52:59 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='172'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"5345fbbaf46e9","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[21-Sep-2021 10:16:17 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='173'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"2b3c0652c643f","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[21-Sep-2021 11:45:30 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='174'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"74d163fe9391c","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[22-Sep-2021 00:39:59 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='175'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"127a67904c36b","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[25-Sep-2021 18:29:05 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='178'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"4d63c7b78df8","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[26-Sep-2021 00:55:29 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='180'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"509f1087aa325","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[26-Sep-2021 01:00:19 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='181'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"d2e211a6f54cd","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[26-Sep-2021 01:00:23 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='182'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"705ca33970084","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[28-Sep-2021 01:23:54 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='184'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"816296aeaf1e2","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[28-Sep-2021 12:30:23 UTC] PHP Fatal error:  Uncaught PayPalHttp\HttpException: {"name":"UNPROCESSABLE_ENTITY","details":[{"field":"/purchase_units/@reference_id=='185'/payee","location":"body","issue":"PAYEE_ACCOUNT_RESTRICTED","description":"The merchant account is restricted."}],"message":"The requested action could not be performed, semantically incorrect, or failed business validation.","debug_id":"6550cb7d7e10e","links":[{"href":"https://developer.paypal.com/docs/api/orders/v2/#error-PAYEE_ACCOUNT_RESTRICTED","rel":"information_link","method":"GET"}]} in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php:215
+Stack trace:
+#0 /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php(100): PayPalHttp\HttpClient->parseResponse(Object(PayPalHttp\Curl))
+#1 /home/sabayachat/public_html/chat/extra/payment/create_payment.php(96): PayPalHttp\HttpClient->execute(Object(PayPalCheckoutSdk\Orders\OrdersCreateRequest))
+#2 {main}
+  thrown in /home/sabayachat/public_html/chat/extra/payment/vendor/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php on line 215
+[21-Jul-2022 08:14:04 Europe/Berlin] PHP Notice:  Trying to get property 'num_rows' of non-object in /home/alatwhatsapp/sabayachat.com/chat/extra/inc/db.php on line 55
+[09-Oct-2022 07:44:03 Europe/Berlin] PHP Notice:  Trying to get property 'num_rows' of non-object in /home/alatwhatsapp/sabayachat.com/chat/extra/inc/db.php on line 55
+[21-Nov-2022 20:05:23 Europe/Berlin] PHP Notice:  Trying to get property 'num_rows' of non-object in /home/alatwhatsapp/sabayachat.com/chat/extra/inc/db.php on line 55
+[09-May-2023 22:54:04 Europe/Berlin] PHP Notice:  Trying to get property 'num_rows' of non-object in /home/alatwhatsapp/sabayachat.com/chat/extra/inc/db.php on line 55
+[18-May-2023 17:05:16 Europe/Berlin] PHP Notice:  Trying to get property 'num_rows' of non-object in /home/alatwhatsapp/sabayachat.com/chat/extra/inc/db.php on line 55
+[21-Jun-2023 11:36:33 Europe/Berlin] PHP Notice:  Trying to get property 'num_rows' of non-object in /home/alatwhatsapp/sabayachat.com/chat/extra/inc/db.php on line 55
