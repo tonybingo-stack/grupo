@@ -158,6 +158,11 @@ $('.main').on('click', '.load_aside', function(e) {
 
 function load_aside(load, append = 0, skiptitle = 0) {
     if (load.attr('load') !== undefined) {
+        if(load.attr('load') === "extra_admin") {
+            window.open("extra/admin", "_blank");
+            return;
+        }
+
         var offset = filter = sortby = search = 0;
         var preloader_disabled = false;
 
