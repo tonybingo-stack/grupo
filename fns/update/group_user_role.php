@@ -243,6 +243,23 @@ if (isset($data['group_id'])) {
                         $result['todo'] = 'reload';
                         $result['reload'] = 'group_members';
 
+                        if($data["group_role_id"] == 3) {
+                            //Add system message
+                            $system_message = [
+                                'message' => 'group_meeting_started'
+                            ];
+                            $system_message = json_encode($system_message);
+                            DB::connect()->insert("group_messages", [
+                                "system_message" => 1,
+                                "original_message" => 'system_message',
+                                "filtered_message" => $system_message,
+                                "group_id" => $data["group_id"],
+                                "user_id" => $data["user_id"],
+                                "created_on" => Registry::load('current_user')->time_stamp,
+                                "updated_on" => Registry::load('current_user')->time_stamp,
+                            ]);
+                        }
+
                         if (isset($data['info_box'])) {
                             $result['info_box']['user_id'] = $data['user_id'];
                             $result['info_box']['group_identifier'] = $data['group_id'];
