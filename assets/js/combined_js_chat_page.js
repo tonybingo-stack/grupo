@@ -144,6 +144,7 @@ if($(this).attr('disable_preloader')!==undefined){$('.main .aside > .site_record
 $('.main .aside > .site_records .record_info > .refresh_current_record > span').trigger('click')}});var video_preview=null;var group_header_contents=null;var load_group_header_request=null;
 // FIXME-BINGO
 const userID = $(".main .chatbox .header .icons .userId").text();
+var targetUserID;
 const userName = $(".main .chatbox .header .icons .userName").text();
 const appID = 943814233;
 const serverSecret = "54845a5afc66a4ef38c90771b6b4be8e";
@@ -176,15 +177,15 @@ zp.setCallInvitationConfig({
       turnOnCameraWhenJoining: false,
       showMyCameraToggleButton: false,
       showMyMicrophoneToggleButton: true,
-      showAudioVideoSettingsButton: true,
+      showAudioVideoSettingsButton: false,
       showScreenSharingButton: false,
-      showTextChat: true,
-      showUserList: true,
-      // ...
+      showTextChat: false,
+      showUserList: false,
+      showRoomDetailsButton: false,
      }
   },
   // The callback for the call invitation ends (this will be triggered when the call invitation is refused/timed out/canceled/ended due to busy status.)
-  onCallInvitationEnded: (reason,data) =>{
+  onCallInvitationEnded: async (reason,data) =>{
       // Add your custom logic here.
       var endTime = new Date();
       var timeDiff = endTime - startTime;
@@ -193,46 +194,48 @@ zp.setCallInvitationConfig({
       var minutesDiff = Math.ceil(timeDiff / 1000 / 60);
       console.log("BINGO", minutesDiff);
 
-      // waitingPageDom.style.display = 'none';
-  },
-
-
-  // The callee will receive the notification through this callback when receiving a call invitation.
-  onIncomingCallReceived: (callID, caller, callType, callees) => {
-    console.log("onIncomingCallReceived");
-  },
-
-  // The callee will receive the notification through this callback when the caller canceled the call invitation.  
-  onIncomingCallCanceled: (callID, caller) => {
-    console.log("onIncomingCallCanceled");
-  },
-
-  // The callee will receive the notification through this callback when the caller accepts the call invitation. 
-  onOutgoingCallAccepted: (callID, callee) => {
-    console.log("onOutgoingCallAccepted");
-    
-  },
-
-  // The caller will receive the notification through this callback when the callee is on a call.
-  onOutgoingCallRejected: (callID, callee) => {
-    console.log("onOutgoingCallRejected");
-  },
-
-  // The caller will receive the notification through this callback when the callee declines the call invitation. 
-  onOutgoingCallDeclined: (callID, callee) => {
-    console.log("onOutgoingCallDeclined");
-  },
-
-  // The callee will receive the notification through this callback when he didn't respond to the call invitation. 
-  onIncomingCallTimeout: (callID, caller) => {
-    console.log("onIncomingCallTimeout");
-  },
-
-  // The caller will receive the notification through this callback when the call invitation timed out.
-  onOutgoingCallTimeout: (callID, callees) => {
-    console.log("onOutgoingCallTimeout");
+      // call api for credit transfer if agency.
+      if (targetUserID !== undefined) {
+        const result = await transferCreditToAgency(minutesDiff);
+        console.log("BINGO", result);
+        if(result.transer) {
+          //show modal
+          
+        }
+        targetUserID = undefined;
+      }
   }
-})
+});
+async function transferCreditToAgency(time) {
+  var data = {
+    zego: 'credit',
+    userID: userID,
+    targetUserID: targetUserID,
+    timeAmount: time
+  };
+
+  if (user_csrf_token !== null) {
+      data["csrf_token"] = user_csrf_token;
+  }
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: 'POST',
+      url: api_request_url,
+      data: data,
+      async: true,
+      success: function (data) { }
+      }).done(function (data) {
+        if(isJSON(data)) {
+          data = JSON.parse(data);
+          resolve(data);
+        }
+        else reject("Invalid json");
+      }).fail(function (err) {
+          console.log('ERROR : ' + err);
+          reject(err);
+      });
+  });
+}
 async function getToken() {
   var data = {
     zego: 'token',
@@ -318,7 +321,7 @@ if(element.attr('loader')!==undefined){$(element.attr('loader')).hide()}
 element.removeClass('processing');change_browser_title(browser_title);history.pushState({},null,browser_address_bar)}).fail(function(qXHR,textStatus,errorThrown){if(element.attr('loader')!==undefined){$(element.attr('loader')).hide()}
 element.removeClass('processing');console.log('ERROR : '+errorThrown)})}});$("body").on('mouseenter','.main .chatbox > .header.view_info > .heading,.main .chatbox > .header.view_info > .image',function(e){if($(window).width()>767.98){$('.main .chatbox > .header > .heading > .subtitle').hide();$('.main .chatbox > .header > .heading > .whos_typing').hide();$('.main .chatbox > .header > .heading > .view_info').fadeIn()}});$("body").on('mouseleave','.main .chatbox > .header.view_info > .heading,.main .chatbox > .header.view_info > .image',function(e){if($(window).width()>767.98){$('.main .chatbox > .header > .heading > .view_info').hide();$('.main .chatbox > .header > .heading > .subtitle').fadeIn();$('.main .chatbox > .header > .heading > .whos_typing').fadeIn()}});
 $("body").on('click','.do_voice_call',async function(e){ 
-  const targetUserID = $(".main .chatbox").attr('user_id');
+  targetUserID = $(".main .chatbox").attr('user_id');
   const targetUserName = $(".main .chatbox .header .heading .title").text();
 
   const targetUser = {
@@ -819,7 +822,6 @@ element.removeClass('processing');if(element.attr('hide_window')!==undefined){$(
 if(element.attr('hide_element')!==undefined){$(element.attr('hide_element')).addClass('d-none')}
 console.log('ERROR : '+errorThrown)})}});var realtime_request=null;var realtime_timeout=null;var realtime_refresh_rate=$.trim(system_variable('refresh_rate'));var site_notification_tone=$('.site_sound_notification > div > audio')[0];var side_navigation=$('.main .side_navigation .menu_items');if(realtime_refresh_rate.length===0){realtime_refresh_rate=2000}
 realtime_timeout=setTimeout(function(){realtime()},3000);
-
 function realtime(){if(realtime_timeout!==null){clearTimeout(realtime_timeout)}
 var request_time=new Date($.now());var whos_typing_last_logged_user_id=0;var logged_in_user_id=0;var fetch_api_support=!1;var force_disable_fetch=!0;if(typeof fetch!=='undefined'&&typeof fetch==='function'&&force_disable_fetch===!1){fetch_api_support=!0}
 realtime_timeout=setTimeout(function(){var post_data={request_time:request_time,realtime:!0,};if($('.logged_in_user_id').length>0){logged_in_user_id=$('.logged_in_user_id').text()}

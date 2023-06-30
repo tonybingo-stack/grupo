@@ -63,7 +63,7 @@ function today_reports()
 {
 	$data=array();
 	$data['reg'] = query('SELECT count(user_id) as total FROM `gr_site_users`WHERE created_on >= CURDATE() AND created_on < CURDATE() + INTERVAL 1 DAY');
-	$data['total_visit'] = query('SELECT count(id) as total FROM `gr_utrack`WHERE tms >= CURDATE() AND tms < CURDATE() + INTERVAL 1 DAY');
+	$data['total_visit'] = query('SELECT count(access_log_id) as total FROM `gr_site_users_device_logs`WHERE created_on >= CURDATE() AND created_on < CURDATE() + INTERVAL 1 DAY');
 	$data['used'] = query('SELECT count(id) as total FROM `gr_credit_used`WHERE used_time >= CURDATE() AND used_time < CURDATE() + INTERVAL 1 DAY');
 	$data['orders'] = query('SELECT count(id) as total FROM `gr_order_records`WHERE action_time >= CURDATE() AND action_time < CURDATE() + INTERVAL 1 DAY');
 	return $data;
