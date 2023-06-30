@@ -1,9 +1,4 @@
-installer.sql
-    
-users table add new 4 coloums 
-ALTER TABLE `gr_site_users` ADD `credits` INT NOT NULL DEFAULT '0' AFTER `total_friends`, ADD `subs` INT NOT NULL DEFAULT '0' AFTER `credits`, ADD `subs_end` INT NOT NULL DEFAULT '0' AFTER `subs`, ADD `agency` BOOL NOT NULL DEFAULT '0' AFTER `social_login_provider_id`,ADD `agency_rate` DOUBLE NOT NULL DEFAULT '0.1' AFTER `agency`, ADD `agency_coins` INT NOT NULL DEFAULT 0 AFTER `agency_rate`, ADD `depict` INT NOT NULL DEFAULT '0' AFTER `encrypt_type`,ADD `extra` INT NOT NULL DEFAULT '0' AFTER `depict`;
-
-Added new table
+ALTER TABLE `gr_site_users`  ADD `subs` INT NOT NULL DEFAULT '0' AFTER `credits`, ADD `subs_end` INT NOT NULL DEFAULT '0' AFTER `subs`, ADD `agency` BOOL NOT NULL DEFAULT '0' AFTER `social_login_provider_id`, ADD `agency_coins` INT NOT NULL DEFAULT 0 AFTER `agency_rate`, ADD `depict` INT NOT NULL DEFAULT '0' AFTER `encrypt_type`,ADD `extra` INT NOT NULL DEFAULT '0' AFTER `depict`;
 
 -- --------------------------------------------------------
 
@@ -49,22 +44,6 @@ CREATE TABLE `gr_order_records` (
   `prices` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `action_time` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gr_subs`
---
-
-CREATE TABLE `gr_subs` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `app_in_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `free_credit` int(11) NOT NULL DEFAULT 0,
-  `monthly_fee` int(11) NOT NULL,
-  `annual_fee` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
